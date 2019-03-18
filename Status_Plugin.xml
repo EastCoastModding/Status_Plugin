@@ -1,0 +1,16 @@
+<VocalDispatch>
+    <Phrases>      
+        <Phrase Event="StatusPlugin.ShowMe107" Priority="5">
+            <Word PreferredText="show" AcceptedAlternates="i"/>
+            <Word PreferredText="me" AcceptedAlternates="am"/>
+			<Word PreferredText="ten" AcceptedAlternates="10"/>
+			<Word PreferredText="seven" AcceptedAlternates="7"/>
+        </Phrase>
+		<Phrase Event="StatusPlugin.ShowMe108" Priority="5">
+            <Word PreferredText="show" AcceptedAlternates="i"/>
+            <Word PreferredText="me" AcceptedAlternates="am"/>
+			<Word PreferredText="ten" AcceptedAlternates="10"/>
+			<Word PreferredText="eight" AcceptedAlternates="8, Ate"/>
+        </Phrase>
+	</Phrases>
+</VocalDispatch>
