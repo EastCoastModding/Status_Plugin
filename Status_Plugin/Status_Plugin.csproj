@@ -60,6 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Statuses\Affirmative.cs" />
+    <Compile Include="Statuses\Negative.cs" />
+    <Compile Include="Statuses\ShowMe10_58.cs" />
+    <Compile Include="Statuses\ShowMe10_19.cs" />
     <Compile Include="Statuses\ShowMe10_8.cs" />
     <Compile Include="Statuses\ShowMe10_7.cs" />
     <Compile Include="Utilities.cs" />

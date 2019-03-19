@@ -1,25 +1,25 @@
 <VocalDispatch>
 	<Phrases>      
-        	<Phrase Event="StatusPlugin.ShowMe107" Priority="5">
+        	<Phrase Event="StatusPlugin.ShowMe10_7" Priority="5">
             		<Word PreferredText="show" AcceptedAlternates="i"/>
             		<Word PreferredText="me" AcceptedAlternates="am"/>
 			<Word PreferredText="ten" AcceptedAlternates="10"/>
 			<Word PreferredText="seven" AcceptedAlternates="7"/>
         	</Phrase>
-		<Phrase Event="StatusPlugin.ShowMe108" Priority="5">
+		<Phrase Event="StatusPlugin.ShowMe10_8" Priority="5">
             		<Word PreferredText="show" AcceptedAlternates="i"/>
             		<Word PreferredText="me" AcceptedAlternates="am"/>
 			<Word PreferredText="ten" AcceptedAlternates="10"/>
 			<Word PreferredText="eight" AcceptedAlternates="8, Ate"/>
         	</Phrase>
-		<Phrase Event="StatusPlugin.ShowMe1058" Priority="5">
+		<Phrase Event="StatusPlugin.ShowMe10_58" Priority="5">
             		<Word PreferredText="show" AcceptedAlternates="i"/>
             		<Word PreferredText="me" AcceptedAlternates="am"/>
 			<Word PreferredText="ten" AcceptedAlternates="10"/>
 			<Word PreferredText="fifty" AcceptedAlternates="50"/>
 			<Word PreferredText="eight" AcceptedAlternates="8, Ate"/>
         	</Phrase>
-		<Phrase Event="StatusPlugin.ShowMe1019" Priority="5">
+		<Phrase Event="StatusPlugin.ShowMe10_19" Priority="5">
             		<Word PreferredText="show" AcceptedAlternates="i"/>
             		<Word PreferredText="me" AcceptedAlternates="am"/>
 			<Word PreferredText="ten" AcceptedAlternates="10"/>
