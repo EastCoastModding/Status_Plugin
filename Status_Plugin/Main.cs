@@ -13,6 +13,7 @@ using RAGENativeUI;
 using RAGENativeUI.Elements;
 using VocalDispatch;
 using System.Windows.Forms;
+using UltimateBackup;
 
 namespace Status_Plugin
 {
@@ -20,6 +21,8 @@ namespace Status_Plugin
     {
 
         public Main() { }
+
+        public bool IsTSBackupRequired = false;
 
         //Start of Response Functions
         public bool ShowMe107()
@@ -59,6 +62,7 @@ namespace Status_Plugin
                 Functions.PlayScannerAudio("10_4_COPY_1");
                 Functions.PlayScannerAudio("IS");
                 Functions.PlayScannerAudio("BACKUP_REQUIRED");
+                IsTSBackupRequired = true;
 
                 return true;
             }
@@ -71,7 +75,24 @@ namespace Status_Plugin
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("Showing 10-19 Station (Returning to Station)");
+            Functions.PlayScannerAudio("10_4_COPY_1");
             return true;
+        }
+        public bool Affirmative()
+        {
+            if (IsTSBackupRequired == true)
+            {
+                IsTSBackupRequired = false;
+            }
+            return false;
+        }
+        public bool Negative()
+        {
+            if (IsTSBackupRequired == true)
+            {
+                IsTSBackupRequired = false;
+            }
+            return false;
         }
         //End of Response Functions
 
@@ -80,6 +101,8 @@ namespace Status_Plugin
         VocalDispatchHelper VDShowMe108 = new VocalDispatchHelper();
         VocalDispatchHelper VDShowMe1058 = new VocalDispatchHelper();
         VocalDispatchHelper VDShowMe1019 = new VocalDispatchHelper();
+        VocalDispatchHelper VDAffirmative = new VocalDispatchHelper();
+        VocalDispatchHelper VDNegative = new VocalDispatchHelper();
         //End of object Init
 
         //Start of Plugin Sequences
@@ -97,6 +120,8 @@ namespace Status_Plugin
                     VDShowMe108.SetupVocalDispatchAPI("StatusPlugin.ShowMe108", new Utilities.VocalDispatchEventDelegate(ShowMe108));
                     VDShowMe1058.SetupVocalDispatchAPI("StatusPlugin.ShowMe1058", new Utilities.VocalDispatchEventDelegate(ShowMe1058));
                     VDShowMe1019.SetupVocalDispatchAPI("StatusPlugin.ShowMe1019", new Utilities.VocalDispatchEventDelegate(ShowMe1019));
+                    VDAffirmative.SetupVocalDispatchAPI("StatusPlugin.Affirmative", new Utilities.VocalDispatchEventDelegate(Affirmative));
+                    VDNegative.SetupVocalDispatchAPI("StatusPlugin.Negative", new Utilities.VocalDispatchEventDelegate(Negative));
                     Game.LogTrivial("Status Plugin " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " has been Initialized.");
                 }
                 catch (Exception e)

@@ -11,3 +11,12 @@ C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Stat
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csprojAssemblyReference.cache
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\bin\Debug\Status_Plugin.dll
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\bin\Debug\Status_Plugin.pdb
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.xml
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csprojAssemblyReference.cache
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CoreCompileInputs.cache
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CopyComplete
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
+C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb

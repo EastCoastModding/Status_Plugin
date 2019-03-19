@@ -52,6 +52,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UltimateBackup">
+      <HintPath>E:\LSPDFR Modding\Reference\UltimateBackup.dll</HintPath>
+    </Reference>
     <Reference Include="VocalDispatch, Version=1.8.1.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>..\..\Reference\VocalDispatch.dll</HintPath>
     </Reference>
