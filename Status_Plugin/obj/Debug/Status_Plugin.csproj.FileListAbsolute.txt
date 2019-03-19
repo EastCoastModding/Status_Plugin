@@ -20,3 +20,4 @@ C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plu
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CopyComplete
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\UltimateBackup.dll

@@ -10,16 +10,13 @@ namespace Status_Plugin.Statuses
 
         public override void Initialize()
         {
-            if (Utilities.IsLSPDFRPluginRunning("VocalDispatch", new System.Version(1, 5, 0, 0)) == true)
+            try
             {
-                try
-                {
-                    VDHelper.SetupVocalDispatchAPI("StatusPlugin.Negative", new Utilities.VocalDispatchEventDelegate(NegativeFunc));
-                }
-                catch (Exception e)
-                {
-                    Rage.Game.Console.Print("Error: " + e.ToString());  
-                }
+                VDHelper.SetupVocalDispatchAPI("StatusPlugin.Negative", new Utilities.VocalDispatchEventDelegate(NegativeFunc));
+            }
+            catch (Exception e)
+            {
+                Rage.Game.Console.Print("Error: " + e.ToString());  
             }
         }
         public override void Finally()

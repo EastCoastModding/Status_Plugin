@@ -10,22 +10,20 @@ namespace Status_Plugin.Statuses
 
         public override void Initialize()
         {
-            if (Utilities.IsLSPDFRPluginRunning("VocalDispatch", new System.Version(1, 5, 0, 0)) == true)
+            try
             {
-                try
-                {
-                    VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_8", new Utilities.VocalDispatchEventDelegate(ShowMe10_8Func));
-                }
-                catch (Exception e)
-                {
-                    Rage.Game.Console.Print("Error: " + e.ToString());
-                }
+                VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_8", new Utilities.VocalDispatchEventDelegate(ShowMe10_8Func));
+            }
+            catch (Exception e)
+            {
+                Rage.Game.Console.Print("Error: " + e.ToString());
             }
         }
         public override void Finally()
         {
             VDHelper.ReleaseVocalDispatchAPI();
         }
+
 
         public bool ShowMe10_8Func()
         {
