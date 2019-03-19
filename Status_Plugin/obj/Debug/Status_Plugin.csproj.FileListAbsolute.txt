@@ -1,0 +1,13 @@
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CoreCompileInputs.cache
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Status_Plugin.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Status_Plugin.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\LSPD First Response.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\RAGENativeUI.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\RagePluginHookSDK.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.xml
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CopyComplete
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csprojAssemblyReference.cache
