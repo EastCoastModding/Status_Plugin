@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LSPD_First_Response.Mod.API;
+using LSPD_First_Response.Tooling;
 using LSPD_First_Response.Mod.Callouts;
 using LSPD_First_Response.Engine.Scripting.Entities;
 using Rage;
@@ -82,17 +83,35 @@ namespace Status_Plugin
         {
             if (IsTSBackupRequired == true)
             {
-                IsTSBackupRequired = false;
+                if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+                {
+                    if (Functions.IsPlayerPerformingPullover() == true)
+                    {
+                        LHandle pullover = Functions.GetCurrentPullover();
+                        Vehicle vehicle = Functions.GetPulloverSuspect(pullover).LastVehicle;
+                        TrafficStopBackup trafficStopBackup = new TrafficStopBackup(vehicle, TrafficStopResponseType.Normal, "Code 2");
+                        trafficStopBackup.callForBackup(1);
+                        IsTSBackupRequired = false;
+                        Functions.PlayScannerAudio("10_4_COPY_1");
+                        Game.DisplayNotification("10-4, Units Responding Code 2");
+                    }
+                }
+                else
+                {
+                    Game.DisplayNotification("Warning: You require UltimateBackup for this feature.");
+                }
             }
-            return false;
+            return true;
         }
         public bool Negative()
         {
             if (IsTSBackupRequired == true)
             {
                 IsTSBackupRequired = false;
+                Functions.PlayScannerAudio("10_4_COPY_1");
+                Game.DisplayNotification("10-4");
             }
-            return false;
+            return true;
         }
         //End of Response Functions
 
