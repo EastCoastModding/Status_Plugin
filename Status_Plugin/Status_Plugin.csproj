@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Statuses\ShowMe10_8.cs" />
+    <Compile Include="Statuses\ShowMe10_7.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
