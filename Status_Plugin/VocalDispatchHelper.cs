@@ -33,7 +33,9 @@ namespace Status_Plugin
         public bool MiddleManEventHandler()
         {
             if (safeeventhandler != null)
-                return safeeventhandler(); //Calls the function we specify when we call SetupVocalDispatchAPI
+            {
+                return safeeventhandler();
+            }
             return false;
         }
         public void SetupVocalDispatchAPI(string eventtohandle, Utilities.VocalDispatchEventDelegate specifiedsafeeventhandler)
@@ -46,7 +48,9 @@ namespace Status_Plugin
         public void ReleaseVocalDispatchAPI()
         {
             if (vocaldispatchapiguid != Guid.Empty)
+            {
                 APIv1.UnregisterEventHandler(vocaldispatchapiguid);
+            }
             safeeventhandler = null;
             vocaldispatchapiguid = Guid.Empty;
         }

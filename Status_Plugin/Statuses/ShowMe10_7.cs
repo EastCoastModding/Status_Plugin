@@ -7,15 +7,7 @@ namespace Status_Plugin.Statuses
 {
     class ShowMe10_7 : Plugin
     {
-        VocalDispatchHelper MyVocalDispatchHelper = new VocalDispatchHelper();
-        public override void Initialize()
-        {
-            MyVocalDispatchHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_7", ShowMe10_7Func);
-        }
-        public override void Finally()
-        {
-            MyVocalDispatchHelper.ReleaseVocalDispatchAPI();
-        }
+        public static void Main() { }
 
         public bool ShowMe10_7Func()
         {
@@ -24,14 +16,22 @@ namespace Status_Plugin.Statuses
                 Functions.SetPlayerAvailableForCalls(false);
                 Game.DisplayNotification("Showing 10-7 (Busy)");
                 Functions.PlayScannerAudio("10_4");
-                return true;
             }
             catch (Exception e)
             {
                 Game.DisplayNotification("Error:" + e);
                 Rage.Game.Console.Print("Error:" + e);
-                return false;
             }
+            return true;
+        }
+
+        public override void Initialize()
+        {
+            APIv1.VocalDispatchPhraseNotificationEventHandlerFunction Handler = new APIv1.VocalDispatchPhraseNotificationEventHandlerFunction(ShowMe10_7Func);
+            Guid ShowMe10_7guid = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_7", Handler);
+        }
+        public override void Finally()
+        {
         }
     }
 }
