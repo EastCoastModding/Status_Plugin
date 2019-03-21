@@ -11,7 +11,7 @@ namespace Status_Plugin.Statuses
         public bool ShowMe10_8Func()
         {
             Functions.SetPlayerAvailableForCalls(true);
-            Game.DisplayNotification("Status Plugin: Showing you 10-8 (Available)");
+            Game.DisplayNotification("~r~Status Plugin: ~u~Showing you 10-8 (Available)");
             Functions.PlayScannerAudio("10_4");
             return true;
         }

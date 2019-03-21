@@ -11,8 +11,8 @@ namespace Status_Plugin.Statuses
         {
             Functions.SetPlayerAvailableForCalls(false);
             Main.IsTSBackupRequired = true;
-            Game.DisplayNotification("Status Plugin: Showing You 10-58 (Direct Traffic Stop)");
-            Game.DisplayNotification("Status Plugin: Is Backup Required?");
+            Game.DisplayNotification("~r~Status Plugin: ~u~Showing You 10-58 (Direct Traffic Stop)");
+            Game.DisplayNotification("~r~Status Plugin: ~u~Is Backup Required?");
             Functions.PlayScannerAudio("10_4");
             return true;
         }

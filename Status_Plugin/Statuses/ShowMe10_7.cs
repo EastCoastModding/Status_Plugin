@@ -2,7 +2,6 @@
 using LSPD_First_Response.Mod.API;
 using Rage;
 using VocalDispatch;
-using Arrest_Manager;
 
 namespace Status_Plugin.Statuses
 {
@@ -11,7 +10,7 @@ namespace Status_Plugin.Statuses
         public bool ShowMe10_7Func()
         {
             Functions.SetPlayerAvailableForCalls(false);
-            Game.DisplayNotification("Status Plugin: Showing you 10-7 (Busy)");
+            Game.DisplayNotification("~r~Status Plugin: ~u~Showing you 10-7 (Busy)");
             Functions.PlayScannerAudio("10_4");
             return true;
         }

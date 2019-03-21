@@ -13,10 +13,10 @@ namespace Status_Plugin.Statuses
             {
                 if (Functions.IsPlayerPerformingPullover())
                 {
-                    Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "Local Patrol");
+                    Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
                     Main.IsTSBackupRequired = false;
                     Functions.PlayScannerAudio("10_4");
-                    Game.DisplayNotification("Status Plugin: 10-4, Units Responding Code 2");
+                    Game.DisplayNotification("~r~Status Plugin: ~u~10-4, Units Responding Code 2");
                 }
             }
             return true;
