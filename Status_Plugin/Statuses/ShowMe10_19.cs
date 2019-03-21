@@ -9,7 +9,7 @@ namespace Status_Plugin.Statuses
         public bool ShowMe10_19Func()
         {
             Functions.SetPlayerAvailableForCalls(false);
-            Game.DisplayNotification("Showing 10-19 (Returning to Station)");
+            Game.DisplayNotification("Status Plugin: Showing You 10-19 (Returning to Station)");
             Functions.PlayScannerAudio("10_4");
             return true;
         }

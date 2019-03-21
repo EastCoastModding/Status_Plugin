@@ -10,12 +10,10 @@ namespace Status_Plugin.Statuses
         public bool ShowMe10_58Func()
         {
             Functions.SetPlayerAvailableForCalls(false);
-            Game.DisplayNotification("Showing 10-58 (Direct Traffic Stop)");
-            Game.DisplayNotification("Is Backup Required");
-            Functions.PlayScannerAudio("10_4");
-            Functions.PlayScannerAudio("IS");
-            Functions.PlayScannerAudio("BACKUP_REQUIRED");
             Main.IsTSBackupRequired = true;
+            Game.DisplayNotification("Status Plugin: Showing You 10-58 (Direct Traffic Stop)");
+            Game.DisplayNotification("Status Plugin: Is Backup Required?");
+            Functions.PlayScannerAudio("10_4");
             return true;
         }
     }

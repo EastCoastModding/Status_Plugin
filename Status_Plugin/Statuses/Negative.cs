@@ -8,7 +8,7 @@ namespace Status_Plugin.Statuses
     {
         public bool NegativeFunc()
         {
-            Game.DisplayNotification("10_4");
+            Game.DisplayNotification("Status Plugin: 10-4");
             Functions.PlayScannerAudio("10_4");
             Main.IsTSBackupRequired = false;
             return true;

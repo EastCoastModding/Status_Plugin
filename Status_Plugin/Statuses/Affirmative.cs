@@ -9,17 +9,14 @@ namespace Status_Plugin.Statuses
     {
         public bool AffirmativeFunc()
         {
-            if (Main.IsTSBackupRequired == true)
+            if (Main.IsTSBackupRequired)
             {
-                if (Functions.IsPlayerPerformingPullover() == true)
+                if (Functions.IsPlayerPerformingPullover())
                 {
-                    LHandle pullover = Functions.GetCurrentPullover();
-                    Vehicle vehicle = Functions.GetPulloverSuspect(pullover).LastVehicle;
-                    TrafficStopBackup trafficStopBackup = new TrafficStopBackup(vehicle, TrafficStopResponseType.Normal, "Code 2");
-                    trafficStopBackup.callForBackup(1);
+                    Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "Local Patrol");
                     Main.IsTSBackupRequired = false;
                     Functions.PlayScannerAudio("10_4");
-                    Game.DisplayNotification("10-4, Units Responding Code 2");
+                    Game.DisplayNotification("Status Plugin: 10-4, Units Responding Code 2");
                 }
             }
             return true;
