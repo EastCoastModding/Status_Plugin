@@ -4,31 +4,13 @@ using Rage;
 
 namespace Status_Plugin.Statuses
 {
-    class Negative : Plugin
+    class Negative
     {
-        VocalDispatchHelper VDHelper = new VocalDispatchHelper();
-
-        public override void Initialize()
-        {
-            try
-            {
-                VDHelper.SetupVocalDispatchAPI("StatusPlugin.Negative", new Utilities.VocalDispatchEventDelegate(NegativeFunc));
-            }
-            catch (Exception e)
-            {
-                Rage.Game.Console.Print("Error: " + e.ToString());  
-            }
-        }
-        public override void Finally()
-        {
-            VDHelper.ReleaseVocalDispatchAPI();
-        }
-
         public bool NegativeFunc()
         {
             Game.DisplayNotification("10_4");
             Functions.PlayScannerAudio("10_4");
-            ShowMe10_58.IsTSBackupRequired = false;
+            Main.IsTSBackupRequired = false;
             return true;
         }
     }

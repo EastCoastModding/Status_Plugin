@@ -4,26 +4,8 @@ using Rage;
 
 namespace Status_Plugin.Statuses
 {
-    class ShowMe10_19 : Plugin
+    class ShowMe10_19
     {
-        VocalDispatchHelper VDHelper = new VocalDispatchHelper();
-
-        public override void Initialize()
-        {
-            try
-            {
-                VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_19", new Utilities.VocalDispatchEventDelegate(ShowMe10_19Func));
-            }
-            catch (Exception e)
-            {
-                Rage.Game.Console.Print("Error: " + e.ToString());
-            }
-        }
-        public override void Finally()
-        {
-            VDHelper.ReleaseVocalDispatchAPI();
-        }
-
         public bool ShowMe10_19Func()
         {
             Functions.SetPlayerAvailableForCalls(false);

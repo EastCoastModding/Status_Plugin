@@ -1,30 +1,12 @@
 ﻿using System;
 using LSPD_First_Response.Mod.API;
 using Rage;
+using Status_Plugin;
 
 namespace Status_Plugin.Statuses
 {
-    class ShowMe10_58 : Plugin
+    class ShowMe10_58
     {
-        VocalDispatchHelper VDHelper = new VocalDispatchHelper();
-        public static bool IsTSBackupRequired = false;
-
-        public override void Initialize()
-        {
-            try
-            {
-                VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_58", new Utilities.VocalDispatchEventDelegate(ShowMe10_58Func));
-            }
-            catch (Exception e)
-            {
-                Rage.Game.Console.Print("Error: " + e.ToString());
-            }
-        }
-        public override void Finally()
-        {
-            VDHelper.ReleaseVocalDispatchAPI();
-        }
-
         public bool ShowMe10_58Func()
         {
             Functions.SetPlayerAvailableForCalls(false);
@@ -33,7 +15,7 @@ namespace Status_Plugin.Statuses
             Functions.PlayScannerAudio("10_4");
             Functions.PlayScannerAudio("IS");
             Functions.PlayScannerAudio("BACKUP_REQUIRED");
-            IsTSBackupRequired = true;
+            Main.IsTSBackupRequired = true;
             return true;
         }
     }
