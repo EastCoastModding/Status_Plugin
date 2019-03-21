@@ -10,20 +10,27 @@ namespace Status_Plugin.Statuses
 
         public override void Initialize()
         {
-            try
-            {
-                VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_8", new Utilities.VocalDispatchEventDelegate(ShowMe10_8Func));
-            }
-            catch (Exception e)
-            {
-                Rage.Game.Console.Print("Error: " + e.ToString());
-            }
+            Functions.OnOnDutyStateChanged += OnOnDutyStateChangedHandler;
         }
         public override void Finally()
         {
             VDHelper.ReleaseVocalDispatchAPI();
         }
 
+        private void OnOnDutyStateChangedHandler(bool OnDuty)
+        {
+            if (OnDuty)
+            {
+                try
+                {
+                    VDHelper.SetupVocalDispatchAPI("StatusPlugin.ShowMe10_8", new Utilities.VocalDispatchEventDelegate(ShowMe10_8Func));
+                }
+                catch (Exception e)
+                {
+                    Rage.Game.Console.Print("Error: " + e.ToString());
+                }
+            }
+        }
 
         public bool ShowMe10_8Func()
         {

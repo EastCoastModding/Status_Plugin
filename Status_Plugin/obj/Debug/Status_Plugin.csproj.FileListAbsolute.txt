@@ -6,7 +6,6 @@ C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\RAGE
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\RagePluginHookSDK.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.xml
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.csproj.CopyComplete
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb
@@ -21,3 +20,6 @@ C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plu
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.dll
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Status_Plugin.pdb
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\UltimateBackup.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Arrest Manager.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\ComputerPlus.dll
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\ComputerPlus.pdb

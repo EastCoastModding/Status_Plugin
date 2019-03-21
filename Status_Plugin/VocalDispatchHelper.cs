@@ -43,7 +43,7 @@ namespace Status_Plugin
             //Setup our notification function and tell VocalDispatch to call it when it hears the appropriate phrase
             safeeventhandler = specifiedsafeeventhandler;
 
-            vocaldispatchapiguid = APIv1.RegisterEventHandler(eventtohandle, new APIv1.VocalDispatchPhraseNotificationEventHandlerFunction(safeeventhandler));
+            vocaldispatchapiguid = APIv1.RegisterEventHandler(eventtohandle, new APIv1.VocalDispatchPhraseNotificationEventHandlerFunction(MiddleManEventHandler));
         }
         public void ReleaseVocalDispatchAPI()
         {

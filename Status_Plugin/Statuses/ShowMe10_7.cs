@@ -2,6 +2,7 @@
 using LSPD_First_Response.Mod.API;
 using Rage;
 using VocalDispatch;
+using Arrest_Manager;
 
 namespace Status_Plugin.Statuses
 {
