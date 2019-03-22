@@ -16,7 +16,7 @@ namespace Status_Plugin.Statuses
                     Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
                     Main.IsTSBackupRequired = false;
                     Functions.PlayScannerAudio("10_4");
-                    Game.DisplayNotification("~r~Status Plugin: ~u~10-4, Units Responding Code 2");
+                    Game.DisplayNotification("~r~Status Plugin: ~w~10-4, Units Responding Code 2");
                 }
             }
             return true;

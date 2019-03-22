@@ -6,77 +6,76 @@ using Status_Plugin.Statuses;
 using RAGENativeUI.Elements;
 using RAGENativeUI;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Status_Plugin
 {
     public class Main : Plugin
     {
         //Variables
+        private static UIMenuItem menu10_7Item;
+        private static UIMenuItem menu10_8Item;
+        private static UIMenuItem menu10_19Item;
+        private static UIMenuItem menu10_58Item;
+        private static UIMenuItem menuAffirmativeItem;
+        private static UIMenuItem menuNegativeItem;
+        private static UIMenu mainMenu;
+        private static MenuPool menuPool;
+        private static GameFiber menuFiber;
+
         readonly string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static bool IsTSBackupRequired = false;
         //End of Variables
 
         //Instances
-        UIMenu statusMenu = new UIMenu("~u~Status Plugin", "~r~By OfficerPope");
-        public static MenuPool statusMenuPool = new MenuPool();
-
-        ShowMe10_7 showMe10_7 = new ShowMe10_7();
-        ShowMe10_8 showMe10_8 = new ShowMe10_8();
-        ShowMe10_19 showMe10_19 = new ShowMe10_19();
-        ShowMe10_58 showMe10_58 = new ShowMe10_58();
-        Affirmative affirmative = new Affirmative();
-        Negative negative = new Negative();
+        private static ShowMe10_7 showMe10_7 = new ShowMe10_7();
+        private static ShowMe10_8 showMe10_8 = new ShowMe10_8();
+        private static ShowMe10_19 showMe10_19 = new ShowMe10_19();
+        private static ShowMe10_58 showMe10_58 = new ShowMe10_58();
+        private static Affirmative affirmative = new Affirmative();
+        private static Negative negative = new Negative();
         //End of Instances
 
         //Menu Functions
-        private void MenuRegister()
+        public static void MenuRegister()
         {
-            statusMenu.AddItem(new UIMenuItem("10-7", "Unavailable for calls"));
-            statusMenu.AddItem(new UIMenuItem("10-8", "Available for calls"));
-            statusMenu.AddItem(new UIMenuItem("10-19", "Returning to station"));
-            statusMenu.AddItem(new UIMenuItem("10-58", "Normal traffic stop"));
-            statusMenu.AddItem(new UIMenuItem("Affirmative"));
-            statusMenu.AddItem(new UIMenuItem("Negative"));
-            statusMenu.RefreshIndex();
+            menuPool = new MenuPool();
+            mainMenu = new UIMenu("~u~Status Plugin", "~r~By OfficerPope");
+            menuPool.Add(mainMenu);
 
-            statusMenu.OnItemSelect += StatusMenu_OnItemSelect;
+            mainMenu.AddItem(menu10_7Item = new UIMenuItem("10-7", "Unavailable for Calls"));
+            mainMenu.AddItem(menu10_8Item = new UIMenuItem("10-8", "Available for Calls"));
+            mainMenu.AddItem(menu10_19Item = new UIMenuItem("10-19", "Returning to Station"));
+            mainMenu.AddItem(menu10_58Item = new UIMenuItem("10-58", "Normal Traffic Stop"));
+            mainMenu.AddItem(menuAffirmativeItem = new UIMenuItem("Affirmative"));
+            mainMenu.AddItem(menuNegativeItem = new UIMenuItem("Negative"));
+
+            mainMenu.RefreshIndex();
+            mainMenu.OnItemSelect += OnItemSelect;
+            mainMenu.MouseControlsEnabled = false;
+            mainMenu.AllowCameraMovement = true;
+            menuFiber = new GameFiber(Process, "Menu_Fiber");
+            menuFiber.Start();
         }
 
-        private void StatusMenu_OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
+        public static void OnItemSelect(UIMenu sender,UIMenuItem selectedItem, int index)
         {
-            if(selectedItem.Text == "10-7")
+            if (sender == mainMenu)
             {
-                showMe10_7.ShowMe10_7Func();
-            }
-            if(selectedItem.Text == "10-8")
-            {
-                showMe10_8.ShowMe10_8Func();
-            }
-            if (selectedItem.Text == "10-19")
-            {
-                showMe10_19.ShowMe10_19Func();
-            }
-            if (selectedItem.Text == "10-58")
-            {
-                showMe10_58.ShowMe10_58Func();
-            }
-            if (selectedItem.Text == "Affirmative")
-            {
-                affirmative.AffirmativeFunc();
-            }
-            if (selectedItem.Text == "Negative")
-            {
-                negative.NegativeFunc();
+                if (selectedItem == menu10_7Item)
+                {
+                    showMe10_7.ShowMe10_7Func();
+                }
             }
         }
 
-        private void Process(object sender, GraphicsEventArgs e)
+        public static void Process()
         {
-            if (Game.IsKeyDown(Keys.Decimal))
+            if (Game.IsKeyDown(Keys.F7))
             {
-                statusMenu.Visible = !statusMenu.Visible;
+                mainMenu.Visible = !mainMenu.Visible;
             }
-            statusMenuPool.ProcessMenus();
+            menuPool.ProcessMenus();
         }
         //End of Menu Functions
 
@@ -95,8 +94,6 @@ namespace Status_Plugin
         //End of Vocal Dispatch Functions
 
         //Plugin Base Functions
-        public Main() { }
-
         public override void Initialize()
         {
             Functions.OnOnDutyStateChanged += Functions_OnOnDutyStateChanged;
@@ -108,18 +105,11 @@ namespace Status_Plugin
         {
             if (onDuty)
             {
-                try
-                {
-                    MenuRegister();
+                VDRegister();
 
-                    VDRegister();
+                MenuRegister();
 
-                    Game.DisplayNotification("Status Plugin " + version + " has loaded successfully, thank you for downloading!");
-                }
-                catch (Exception e)
-                {
-                    Game.DisplayNotification("Status Plugin " + version + " has failed to load successfully!!");
-                }
+                Game.DisplayNotification("Status Plugin " + version + " has loaded successfully, thank you for downloading!");
             }
         }
 
