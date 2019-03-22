@@ -32,6 +32,11 @@ namespace Status_Plugin
         private void MenuRegister()
         {
             statusMenu.AddItem(new UIMenuItem("10-7", "Unavailable for calls"));
+            statusMenu.AddItem(new UIMenuItem("10-8", "Available for calls"));
+            statusMenu.AddItem(new UIMenuItem("10-19", "Returning to station"));
+            statusMenu.AddItem(new UIMenuItem("10-58", "Normal traffic stop"));
+            statusMenu.AddItem(new UIMenuItem("Affirmative"));
+            statusMenu.AddItem(new UIMenuItem("Negative"));
             statusMenu.RefreshIndex();
 
             statusMenu.OnItemSelect += StatusMenu_OnItemSelect;
@@ -43,11 +48,31 @@ namespace Status_Plugin
             {
                 showMe10_7.ShowMe10_7Func();
             }
+            if(selectedItem.Text == "10-8")
+            {
+                showMe10_8.ShowMe10_8Func();
+            }
+            if (selectedItem.Text == "10-19")
+            {
+                showMe10_19.ShowMe10_19Func();
+            }
+            if (selectedItem.Text == "10-58")
+            {
+                showMe10_58.ShowMe10_58Func();
+            }
+            if (selectedItem.Text == "Affirmative")
+            {
+                affirmative.AffirmativeFunc();
+            }
+            if (selectedItem.Text == "Negative")
+            {
+                negative.NegativeFunc();
+            }
         }
 
         private void Process(object sender, GraphicsEventArgs e)
         {
-            if (Game.IsKeyDown(Keys.F5))
+            if (Game.IsKeyDown(Keys.Decimal))
             {
                 statusMenu.Visible = !statusMenu.Visible;
             }
