@@ -5,7 +5,7 @@ using UltimateBackup;
 
 namespace Status_Plugin
 {
-    class Statuses
+    public class Statuses
     {
         public bool ShowMe10_7()
         {
