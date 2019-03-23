@@ -35,19 +35,30 @@ namespace Status_Plugin
             Game.DisplayNotification("~r~Status Plugin: ~w~Showing You 10-58 (Direct Traffic Stop)");
             Game.DisplayNotification("~r~Status Plugin: ~w~Is Backup Required?");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-            Functions.PlayScannerAudio("10_4");
+            Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
             return true;
         }
         public bool Affirmative()
         {
             if (Globals.IsTSBackupRequired)
             {
-                if (Functions.IsPlayerPerformingPullover())
+                if (Functions.IsPlayerPerformingPullover() && Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
                 {
-                    Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
-                    Globals.IsTSBackupRequired = false;
-                    Functions.PlayScannerAudio("10_4");
-                    Game.DisplayNotification("~r~Status Plugin: ~w~10-4, Units Responding Code 2");
+                    if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+                    {
+                        Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
+                        Globals.IsTSBackupRequired = false;
+                        Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
+                        Game.DisplayNotification("~r~Status Plugin: ~w~10-4, Units Responding");
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("~r~Status Plugin: " + "UltimateBackup is required for this feature.");
+                    }
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~Status Plugin: " + "Traffic stop is not in progress.");
                 }
             }
             return true;
@@ -59,5 +70,7 @@ namespace Status_Plugin
             Globals.IsTSBackupRequired = false;
             return true;
         }
+
+
     }
 }

@@ -26,12 +26,12 @@ namespace Status_Plugin
 
             _MenuPool.Add(mainMenu);
 
-            mainMenu.AddItem(menu10_7Item = new UIMenuItem("10-7", "Unavailable for Calls"));
-            mainMenu.AddItem(menu10_8Item = new UIMenuItem("10-8", "Available for Calls"));
-            mainMenu.AddItem(menu10_19Item = new UIMenuItem("10-19", "Returning to Station"));
-            mainMenu.AddItem(menu10_58Item = new UIMenuItem("10-58", "Normal Traffic Stop"));
-            mainMenu.AddItem(menuAffirmativeItem = new UIMenuItem("Affirmative"));
-            mainMenu.AddItem(menuNegativeItem = new UIMenuItem("Negative"));
+            mainMenu.AddItem(menu10_7Item = new UIMenuItem(">>10-7<<", "Unavailable for Calls"));
+            mainMenu.AddItem(menu10_8Item = new UIMenuItem(">>10-8<<", "Available for Calls"));
+            mainMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19<<", "Returning to Station"));
+            mainMenu.AddItem(menu10_58Item = new UIMenuItem(">>10-58<<", "Normal Traffic Stop"));
+            mainMenu.AddItem(menuAffirmativeItem = new UIMenuItem(">>Affirmative<<"));
+            mainMenu.AddItem(menuNegativeItem = new UIMenuItem(">>Negative<<"));
             mainMenu.RefreshIndex();
 
             mainMenu.OnItemSelect += OnItemSelect;

@@ -18,7 +18,10 @@ namespace Status_Plugin
             {
                 Menu.Main();
 
-                Vocal_Dispatch_Start.Main();
+                if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
+                {
+                    Vocal_Dispatch_Start.Main();
+                }
 
                 Game.DisplayNotification("~r~Status Plugin v" + Globals.version + " ~p~By OfficerPope: ~w~Has loaded successfully, thank you for downloading!");
             }
