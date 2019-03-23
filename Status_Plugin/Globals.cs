@@ -1,4 +1,6 @@
-﻿namespace Status_Plugin
+﻿using System.Reflection;
+[assembly: AssemblyFileVersion("1.0.29.0"), AssemblyVersion("1.0.29.0")]
+namespace Status_Plugin
 {
     static class Globals
     {
