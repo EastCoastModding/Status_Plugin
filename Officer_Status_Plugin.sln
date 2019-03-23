@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Status_Plugin", "Status_Plugin\Status_Plugin.csproj", "{6749CAEB-2394-463F-955A-2145C378DEEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Officer_Status_Plugin", "Status_Plugin\Officer_Status_Plugin.csproj", "{6749CAEB-2394-463F-955A-2145C378DEEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using RAGENativeUI;
 using RAGENativeUI.Elements;
 using System.Windows.Forms;
 
-namespace Status_Plugin
+namespace Officer_Status_Plugin
 {
     public class Menu
     {
@@ -22,7 +22,7 @@ namespace Status_Plugin
         {
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
-            mainMenu = new UIMenu("~r~Status Menu", "By " + Globals.author);
+            mainMenu = new UIMenu("~r~Officer Status Menu", "By " + Globals.author);
 
             _MenuPool.Add(mainMenu);
 
@@ -40,6 +40,7 @@ namespace Status_Plugin
             mainMenu.MouseControlsEnabled = false;
 
             menuProcessFiber.Start();
+            Game.Console.Print(Globals.PluginName + ": Menus Initialised");
         }
 
         private static void OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
@@ -76,10 +77,10 @@ namespace Status_Plugin
 
         private static void MenuProcess()
         {
-            while (true)
+            while(true)
             {
                 GameFiber.Yield();
-                if (Game.IsKeyDown(Keys.F7))
+                if (Game.IsKeyDown(Globals.menuKey))
                 {
                     mainMenu.Visible = !mainMenu.Visible;
 

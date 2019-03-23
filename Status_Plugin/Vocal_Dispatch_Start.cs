@@ -1,7 +1,7 @@
 ﻿using VocalDispatch;
 using Rage;
 
-namespace Status_Plugin
+namespace Officer_Status_Plugin
 {
     class Vocal_Dispatch_Start
     {
@@ -15,7 +15,7 @@ namespace Status_Plugin
             APIv1.RegisterEventHandler("StatusPlugin.Affirmative", statuses.Affirmative);
             APIv1.RegisterEventHandler("StatusPlugin.Negative", statuses.Negative);
 
-            Game.Console.Print("Status Plugin: Registered all Vocal Dispatch Events");
+            Game.Console.Print(Globals.PluginName + ": Registered all Vocal Dispatch Events");
         }
     }
 }

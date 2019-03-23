@@ -1,7 +1,7 @@
 ﻿using LSPD_First_Response.Mod.API;
 using Rage;
 
-namespace Status_Plugin
+namespace Officer_Status_Plugin
 {
     public class Main : Plugin
     {
@@ -9,7 +9,7 @@ namespace Status_Plugin
         {
             Functions.OnOnDutyStateChanged += Functions_OnOnDutyStateChanged;
 
-            Game.LogTrivial("Status Plugin " + Globals.version + " has been Initialized.");
+            Game.LogTrivial(Globals.PluginName + Globals.version + " has been Initialized.");
         }
 
         private void Functions_OnOnDutyStateChanged(bool onDuty)
@@ -18,12 +18,14 @@ namespace Status_Plugin
             {
                 Menu.Main();
 
+                Utilities.GetKeybinds();
+
                 if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
                 {
                     Vocal_Dispatch_Start.Main();
                 }
 
-                Game.DisplayNotification("~r~Status Plugin v" + Globals.version + " ~p~By OfficerPope: ~w~Has loaded successfully, thank you for downloading!");
+                Game.DisplayNotification("~r~" + Globals.PluginName + " v" + Globals.version + " By " + Globals.author + ": ~w~Has loaded successfully, thank you for downloading!");
             }
         }
 
@@ -31,7 +33,7 @@ namespace Status_Plugin
         {
             Menu.Stop();
 
-            Game.LogTrivial("Status Plugin has cleaned up.");
+            Game.LogTrivial(Globals.PluginName + " has cleaned up.");
         }
     }
 }

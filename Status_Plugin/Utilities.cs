@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Reflection;
 using LSPD_First_Response.Mod.API;
+using Rage;
 
-namespace Status_Plugin
+namespace Officer_Status_Plugin
 {
     class Utilities
     {
@@ -18,6 +20,24 @@ namespace Status_Plugin
                 }
             }
             return false;
+        }
+        public static void GetKeybinds()
+        {
+            KeysConverter kc = new KeysConverter();
+
+            InitializationFile ini = new InitializationFile("Plugins/lspdfr/Officer_Status_Plugin.ini");
+            ini.Create();
+
+            string menuKey = ini.ReadString("KeyBindings", "menuKey", "F7");
+            try
+            {
+                Globals.menuKey = (Keys)kc.ConvertFromString(menuKey);
+            }
+            catch
+            {
+                Globals.menuKey = Keys.F7;
+                Game.DisplayNotification("~r~Officer Status Plugin: ~w~There was an error reading the .ini file. Setting defaults...");
+            }
         }
     }
 }
