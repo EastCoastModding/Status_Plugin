@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-[assembly: AssemblyFileVersion("0.9.0.29"), AssemblyVersion("0.9.0.29")]
+[assembly: AssemblyFileVersion("1.0.0.0"), AssemblyVersion("1.0.0.0")]
 namespace Status_Plugin
 {
     static class Globals

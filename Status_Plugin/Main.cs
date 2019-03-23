@@ -16,6 +16,8 @@ namespace Status_Plugin
         {
             if (onDuty)
             {
+                Menu.Main();
+
                 Vocal_Dispatch_Start.Main();
 
                 Game.DisplayNotification("~r~Status Plugin v" + Globals.version + " ~p~By OfficerPope: ~w~Has loaded successfully, thank you for downloading!");
@@ -24,6 +26,8 @@ namespace Status_Plugin
 
         public override void Finally()
         {
+            Menu.Stop();
+
             Game.LogTrivial("Status Plugin has cleaned up.");
         }
     }
