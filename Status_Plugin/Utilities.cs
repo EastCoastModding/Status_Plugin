@@ -21,7 +21,7 @@ namespace Officer_Status_Plugin
             }
             return false;
         }
-        public static void GetKeybinds()
+        public static void GetIni()
         {
             KeysConverter kc = new KeysConverter();
 
