@@ -4,3 +4,5 @@
 
 /.vs/Status_Plugin/v15
 /.vs/Officer_Status_Plugin/v15/Server/sqlite3
+*.sqlite-journal
+/.vs/slnx.sqlite
