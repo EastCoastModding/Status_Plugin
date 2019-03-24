@@ -49,6 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\RagePluginHookSDK.dll</HintPath>
     </Reference>
+    <Reference Include="StopThePed">
+      <HintPath>..\..\Dependencies\StopThePed.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />

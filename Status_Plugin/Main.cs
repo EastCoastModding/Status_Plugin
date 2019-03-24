@@ -18,7 +18,7 @@ namespace Officer_Status_Plugin
             {
                 Menu.Main();
 
-                Utilities.GetKeybinds();
+                Utilities.GetIni();
 
                 if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
                 {
