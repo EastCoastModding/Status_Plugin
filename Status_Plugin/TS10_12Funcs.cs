@@ -11,7 +11,7 @@ namespace Officer_Status_Plugin
         {
             Functions.SetPlayerAvailableForCalls(false);
             Globals.IsTSBackupRequired = true;
-            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O1 (Traffic Stop Occupied 1 Time)");
+            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O1 (Traffic Stop Occupied Times 1)");
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Is Backup Required?");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
@@ -22,7 +22,7 @@ namespace Officer_Status_Plugin
         {
             Functions.SetPlayerAvailableForCalls(false);
             Globals.IsTSBackupRequired = true;
-            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O2 (Traffic Stop Occupied 2 Times)");
+            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O2 (Traffic Stop Occupied Times 2)");
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Is Backup Required?");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
@@ -33,7 +33,7 @@ namespace Officer_Status_Plugin
         {
             Functions.SetPlayerAvailableForCalls(false);
             Globals.IsTSBackupRequired = true;
-            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O3 (Traffic Stop Occupied 3 Times)");
+            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O3 (Traffic Stop Occupied Times 3)");
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Is Backup Required?");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
@@ -43,8 +43,7 @@ namespace Officer_Status_Plugin
         internal bool ShowMe10_12O4()
         {
             Functions.SetPlayerAvailableForCalls(false);
-            Globals.IsTSBackupRequired = true;
-            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O4 (Traffic Stop Occupied 4 Times)");
+            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-12 O4 (Traffic Stop Occupied Times 4)");
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
                 Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");

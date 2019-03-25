@@ -30,8 +30,8 @@
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="twelve" AcceptedAlternates="12"/>
       <Word PreferredText="occupied"/>
+      <Word PreferredText="times"/>
       <Word PreferredText="one" AcceptedAlternates="1"/>
-      <Word PreferredText="time" AcceptedAlternates="times"/>
     </Phrase>
     <Phrase Event="StatusPlugin.ShowMe10_12O2" Priority="7">
       <Word PreferredText="show" AcceptedAlternates="i"/>
@@ -39,8 +39,8 @@
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="twelve" AcceptedAlternates="12"/>
       <Word PreferredText="occupied"/>
+      <Word PreferredText="times"/>
       <Word PreferredText="two" AcceptedAlternates="2"/>
-      <Word PreferredText="time" AcceptedAlternates="times"/>
     </Phrase>
     <Phrase Event="StatusPlugin.ShowMe10_12O3" Priority="7">
       <Word PreferredText="show" AcceptedAlternates="i"/>
@@ -48,8 +48,8 @@
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="twelve" AcceptedAlternates="12"/>
       <Word PreferredText="occupied"/>
+      <Word PreferredText="times"/>
       <Word PreferredText="three" AcceptedAlternates="3"/>
-      <Word PreferredText="time" AcceptedAlternates="times"/>
     </Phrase>
     <Phrase Event="StatusPlugin.ShowMe10_12O4" Priority="7">
       <Word PreferredText="show" AcceptedAlternates="i"/>
@@ -57,8 +57,14 @@
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="twelve" AcceptedAlternates="12"/>
       <Word PreferredText="occupied"/>
+      <Word PreferredText="times"/>
       <Word PreferredText="four" AcceptedAlternates="4"/>
-      <Word PreferredText="time" AcceptedAlternates="times"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.ShowMe10_15" Priority="7">
+      <Word PreferredText="show" AcceptedAlternates="i"/>
+      <Word PreferredText="me" AcceptedAlternates="am"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="fifteen" AcceptedAlternates="15"/>
     </Phrase>
 		<Phrase Event="StatusPlugin.ShowMe10_19" Priority="7">
       <Word PreferredText="show" AcceptedAlternates="i"/>

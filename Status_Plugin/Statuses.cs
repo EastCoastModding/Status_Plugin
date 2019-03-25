@@ -38,6 +38,14 @@ namespace Officer_Status_Plugin
             Functions.PlayScannerAudio("10_4");
             return true;
         }
+        public bool ShowMe10_15()
+        {
+            Functions.SetPlayerAvailableForCalls(false);
+            Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-15 (Suspect in Custody, Returning to Station)");
+            GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+            Functions.PlayScannerAudio("10_4");
+            return true;
+        }
         public bool ShowMe10_19()
         {
             Functions.SetPlayerAvailableForCalls(false);
