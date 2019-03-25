@@ -3,6 +3,7 @@ using Rage;
 using RAGENativeUI;
 using RAGENativeUI.Elements;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Officer_Status_Plugin
 {
@@ -16,7 +17,8 @@ namespace Officer_Status_Plugin
         private static UIMenuItem menu10_6Item;
         private static UIMenuItem menu10_7Item;
         private static UIMenuItem menu10_8Item;
-        private static UIMenuItem menu10_12Item;
+        private static UIMenuListItem menu10_12List;
+        private static object[] List10_12 = new object[] { "10-12 Occupied 1x", "10-12 Occupied 2x", "10-12 Occupied 3x", "10-12 Occupied 4x" };
         private static UIMenuItem menu10_19Item;
         private static UIMenuItem menu10_23Item;
         private static UIMenuItem menu10_41Item;
@@ -44,21 +46,22 @@ namespace Officer_Status_Plugin
             _MenuPool.Add(mainMenu);
             _MenuPool.Add(serviceMenu);
             _MenuPool.Add(generalMenu);
+            _MenuPool.Add(backupMenu);
 
-            serviceMenu.AddItem(menu10_5Item = new UIMenuItem(">>10-5", "Break"));
-            serviceMenu.AddItem(menu10_6Item = new UIMenuItem(">>10-6", "Busy"));
-            serviceMenu.AddItem(menu10_7Item = new UIMenuItem(">>10-7", "Out of Service"));
-            serviceMenu.AddItem(menu10_8Item = new UIMenuItem(">>10-8", "Available for Calls"));
-            serviceMenu.AddItem(menu10_41Item = new UIMenuItem(">>10-41", "Beginning Tour of Duty"));
-            serviceMenu.AddItem(menu10_42Item = new UIMenuItem(">>10-42", "Ending Tour of Duty"));
+            serviceMenu.AddItem(menu10_5Item = new UIMenuItem(">>10-5", "~g~Break"));
+            serviceMenu.AddItem(menu10_6Item = new UIMenuItem(">>10-6", "~g~Busy"));
+            serviceMenu.AddItem(menu10_7Item = new UIMenuItem(">>10-7", "~g~Out of Service"));
+            serviceMenu.AddItem(menu10_8Item = new UIMenuItem(">>10-8", "~g~Available for Calls"));
+            serviceMenu.AddItem(menu10_41Item = new UIMenuItem(">>10-41", "~g~Beginning Tour of Duty"));
+            serviceMenu.AddItem(menu10_42Item = new UIMenuItem(">>10-42", "~g~Ending Tour of Duty"));
 
-            generalMenu.AddItem(menu10_12Item = new UIMenuItem(">>10-12", "Normal Traffic Stop"));
-            generalMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19", "Returning to Station"));
-            generalMenu.AddItem(menu10_23Item = new UIMenuItem(">>10-23", "Arrived on Scene"));
+            generalMenu.AddItem(menu10_12List = new UIMenuListItem("10-12","~g~Traffic Stop", List10_12));
+            generalMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19", "~g~Returning to Station"));
+            generalMenu.AddItem(menu10_23Item = new UIMenuItem(">>10-23", "~g~Arrived on Scene"));
             generalMenu.AddItem(menuAffirmativeItem = new UIMenuItem(">>Affirmative"));
             generalMenu.AddItem(menuNegativeItem = new UIMenuItem(">>Negative"));
 
-            backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10_51", "Request a Tow Truck"));
+            backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10-51", "~g~Request a Tow Truck"));
 
             mainMenu.AddItem(menuGeneralItem = new UIMenuItem("General Statuses"));
             mainMenu.BindMenuToItem(generalMenu, menuGeneralItem);
@@ -96,13 +99,33 @@ namespace Officer_Status_Plugin
         private static void OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             Statuses statuses = new Statuses();
+            TS10_12Funcs ts10_12Funcs = new TS10_12Funcs();
             if(sender == generalMenu)
             {
-                if (selectedItem == menu10_12Item) { statuses.ShowMe10_12(); }
-                else if (selectedItem == menu10_19Item) { statuses.ShowMe10_19(); }
+                if (selectedItem == menu10_19Item) { statuses.ShowMe10_19(); }
                 else if (selectedItem == menu10_23Item) { statuses.ShowMe10_23(); }
                 else if (selectedItem == menuAffirmativeItem) { statuses.Affirmative(); }
                 else if (selectedItem == menuNegativeItem) { statuses.Negative(); }
+                else if (selectedItem == menu10_12List)
+                {
+                    string selectedListItem = menu10_12List.SelectedItem.ToString();
+                    if (selectedListItem == "10-12 Occupied 1x")
+                    {
+                        ts10_12Funcs.ShowMe10_12O1();
+                    }
+                    if (selectedListItem == "10-12 Occupied 2x")
+                    {
+                        ts10_12Funcs.ShowMe10_12O2();
+                    }
+                    if (selectedListItem == "10-12 Occupied 3x")
+                    {
+                        ts10_12Funcs.ShowMe10_12O3();
+                    }
+                    if (selectedListItem == "10-12 Occupied 4x")
+                    {
+                        ts10_12Funcs.ShowMe10_12O4();
+                    }
+                }
             }
             if(sender == serviceMenu)
             {

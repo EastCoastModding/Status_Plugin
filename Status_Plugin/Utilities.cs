@@ -29,6 +29,7 @@ namespace Officer_Status_Plugin
             ini.Create();
 
             string menuKey = ini.ReadString("KeyBindings", "menuKey", "F7");
+            
             try
             {
                 Globals.menuKey = (Keys)kc.ConvertFromString(menuKey);

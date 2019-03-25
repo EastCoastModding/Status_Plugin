@@ -8,11 +8,15 @@ namespace Officer_Status_Plugin
         public static void Main()
         {
             Statuses statuses = new Statuses();
+            TS10_12Funcs ts10_12Funcs = new TS10_12Funcs();
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_5", statuses.ShowMe10_5);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_6", statuses.ShowMe10_6);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_7", statuses.ShowMe10_7);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_8", statuses.ShowMe10_8);
-            APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_12", statuses.ShowMe10_12);
+            APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_12O1", ts10_12Funcs.ShowMe10_12O1);
+            APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_12O2", ts10_12Funcs.ShowMe10_12O2);
+            APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_12O3", ts10_12Funcs.ShowMe10_12O3);
+            APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_12O4", ts10_12Funcs.ShowMe10_12O4);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_19", statuses.ShowMe10_19);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_23", statuses.ShowMe10_23);
             APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_41", statuses.ShowMe10_41);
