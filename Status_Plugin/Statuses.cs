@@ -75,6 +75,10 @@ namespace Officer_Status_Plugin
                 return true;
             }
         }
+        public bool ShowMe10_97()
+        {
+            return true;
+        }
         public bool Requesting10_51()
         {
             if (Utilities.IsLSPDFRPluginRunning("StopThePed"))
