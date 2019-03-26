@@ -11,7 +11,7 @@ namespace Officer_Status_Plugin
         public static string firstName;
         public static string lastName;
         public static string unitNum;
-        public static string Unit = firstName + "." + lastName + " " + unitNum;
+        public static string Unit;
 
         public readonly static string PluginName = "Officer Status Plugin";
         public readonly static string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
