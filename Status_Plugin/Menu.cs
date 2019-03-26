@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Officer_Status_Plugin
 {
-    public class Menu
+    internal class Menu
     {
         private static UIMenuItem menuGeneralItem;
         private static UIMenuItem menuServiceItem;
@@ -18,7 +18,8 @@ namespace Officer_Status_Plugin
         private static UIMenuItem menu10_7Item;
         private static UIMenuItem menu10_8Item;
         private static UIMenuListItem menu10_12List;
-        private static object[] List10_12 = new object[] { "10-12 Occupied 1x", "10-12 Occupied 2x", "10-12 Occupied 3x", "10-12 Occupied 4x" };
+        private static object[] List10_12 = new object[] { "Occupied x1", "Occupied x2", "Occupied x3", "Occupied x4" };
+        private static UIMenuItem menu10_15Item;
         private static UIMenuItem menu10_19Item;
         private static UIMenuItem menu10_23Item;
         private static UIMenuItem menu10_41Item;
@@ -38,10 +39,10 @@ namespace Officer_Status_Plugin
         {
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
-            mainMenu = new UIMenu("~r~Officer Status Menu", "By " + Globals.author);
-            serviceMenu = new UIMenu("~r~Service Status Menu", "By " + Globals.author);
-            generalMenu = new UIMenu("~r~General Status Menu", "By " + Globals.author);
-            backupMenu = new UIMenu("~r~Backup Status Menu", "By " + Globals.author);
+            mainMenu = new UIMenu("Officer Status Menu", "By " + Globals.author);
+            serviceMenu = new UIMenu("Service Status Menu", "By " + Globals.author);
+            generalMenu = new UIMenu("General Status Menu", "By " + Globals.author);
+            backupMenu = new UIMenu("Backup Status Menu", "By " + Globals.author);
 
             _MenuPool.Add(mainMenu);
             _MenuPool.Add(serviceMenu);
@@ -55,7 +56,8 @@ namespace Officer_Status_Plugin
             serviceMenu.AddItem(menu10_41Item = new UIMenuItem(">>10-41", "~g~Beginning Tour of Duty"));
             serviceMenu.AddItem(menu10_42Item = new UIMenuItem(">>10-42", "~g~Ending Tour of Duty"));
 
-            generalMenu.AddItem(menu10_12List = new UIMenuListItem("10-12","~g~Traffic Stop", List10_12));
+            generalMenu.AddItem(menu10_12List = new UIMenuListItem(">>10-12","~g~Traffic Stop", List10_12));
+            generalMenu.AddItem(menu10_15Item = new UIMenuItem(">>10-15", "Suspect in Custody, Returning to Station"));
             generalMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19", "~g~Returning to Station"));
             generalMenu.AddItem(menu10_23Item = new UIMenuItem(">>10-23", "~g~Arrived on Scene"));
             generalMenu.AddItem(menuAffirmativeItem = new UIMenuItem(">>Affirmative"));
@@ -102,26 +104,47 @@ namespace Officer_Status_Plugin
             TS10_12Funcs ts10_12Funcs = new TS10_12Funcs();
             if(sender == generalMenu)
             {
-                if (selectedItem == menu10_19Item) { statuses.ShowMe10_19(); }
+                if (selectedItem == menu10_12List)
+                {
+                    string selectedListItem = menu10_12List.SelectedItem.ToString();
+                    if (selectedListItem == "Occupied x1")
+                    {
+                        ts10_12Funcs.ShowMe10_12O1();
+                    }
+                    if (selectedListItem == "Occupied x2")
+                    {
+                        ts10_12Funcs.ShowMe10_12O2();
+                    }
+                    if (selectedListItem == "Occupied x3")
+                    {
+                        ts10_12Funcs.ShowMe10_12O3();
+                    }
+                    if (selectedListItem == "Occupied x4")
+                    {
+                        ts10_12Funcs.ShowMe10_12O4();
+                    }
+                }
+                else if (selectedItem == menu10_15Item) { statuses.ShowMe10_15(); }
+                else if (selectedItem == menu10_19Item) { statuses.ShowMe10_19(); }
                 else if (selectedItem == menu10_23Item) { statuses.ShowMe10_23(); }
                 else if (selectedItem == menuAffirmativeItem) { statuses.Affirmative(); }
                 else if (selectedItem == menuNegativeItem) { statuses.Negative(); }
                 else if (selectedItem == menu10_12List)
                 {
                     string selectedListItem = menu10_12List.SelectedItem.ToString();
-                    if (selectedListItem == "10-12 Occupied 1x")
+                    if (selectedListItem == "Occupied x1")
                     {
                         ts10_12Funcs.ShowMe10_12O1();
                     }
-                    if (selectedListItem == "10-12 Occupied 2x")
+                    if (selectedListItem == "Occupied x2")
                     {
                         ts10_12Funcs.ShowMe10_12O2();
                     }
-                    if (selectedListItem == "10-12 Occupied 3x")
+                    if (selectedListItem == "Occupied x3")
                     {
                         ts10_12Funcs.ShowMe10_12O3();
                     }
-                    if (selectedListItem == "10-12 Occupied 4x")
+                    if (selectedListItem == "Occupied x4")
                     {
                         ts10_12Funcs.ShowMe10_12O4();
                     }
