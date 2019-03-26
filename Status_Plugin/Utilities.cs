@@ -37,6 +37,7 @@ namespace Officer_Status_Plugin
             try
             {
                 Globals.firstName = Globals.firstName.Substring(0, 1);
+                Globals.Unit = Globals.rank + " " + Globals.firstName + "." + Globals.lastName + " " + Globals.unitNum;
                 Globals.menuKey = (Keys)kc.ConvertFromString(menuKey);
             }
             catch

@@ -47,13 +47,13 @@ namespace Officer_Status_Plugin
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
             mainMenu = new UIMenu("Officer Status Menu", Globals.Unit);
-            mainMenu.SetMenuWidthOffset(5);
+            mainMenu.SetMenuWidthOffset(10);
             serviceMenu = new UIMenu("Service Status Menu",Globals.Unit);
-            serviceMenu.SetMenuWidthOffset(5);
+            serviceMenu.SetMenuWidthOffset(10);
             generalMenu = new UIMenu("General Status Menu",Globals.Unit);
-            generalMenu.SetMenuWidthOffset(5);
+            generalMenu.SetMenuWidthOffset(10);
             backupMenu = new UIMenu("Backup Status Menu",Globals.Unit);
-            backupMenu.SetMenuWidthOffset(5);
+            backupMenu.SetMenuWidthOffset(10);
 
             _MenuPool.Add(mainMenu);
             _MenuPool.Add(serviceMenu);
@@ -68,7 +68,7 @@ namespace Officer_Status_Plugin
             serviceMenu.AddItem(menu10_42Item = new UIMenuItem(">>10-42", "~g~Ending Tour of Duty"));
 
             generalMenu.AddItem(menu10_11List = new UIMenuListItem(">>10-11","~g~Traffic Stop", List10_11));
-            generalMenu.AddItem(menu10_15Item = new UIMenuItem(">>10-15", "Suspect in Custody, Returning to Station"));
+            generalMenu.AddItem(menu10_15Item = new UIMenuItem(">>10-15", "~g~Suspect in Custody, Returning to Station"));
             generalMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19", "~g~Returning to Station"));
             generalMenu.AddItem(menu10_23Item = new UIMenuItem(">>10-23", "~g~Arrived on Scene"));
             generalMenu.AddItem(menuCode5Item = new UIMenuItem(">>Code 5", "~g~Felony Stop"));
@@ -90,7 +90,7 @@ namespace Officer_Status_Plugin
             mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
             backupMenu.ParentMenu = mainMenu;
             mainMenu.AddItem(menu10_99Item = new UIMenuItem("Panic"));
-            menu10_99Item.HighlightedBackColor = Color.Red;
+            menu10_99Item.HighlightedForeColor = Color.Red; menu10_99Item.HighlightedBackColor = Color.Red;
 
             mainMenu.RefreshIndex();
             serviceMenu.RefreshIndex();
@@ -169,7 +169,7 @@ namespace Officer_Status_Plugin
             {
                 if (selectedItem == menu10_32List)
                 {
-                    string selectedListItem = menu10_11List.SelectedItem.ToString();
+                    string selectedListItem = menu10_32List.SelectedItem.ToString();
                     if (selectedListItem == "Code 2")
                     {
                         statuses.Requesting10_32C2();
