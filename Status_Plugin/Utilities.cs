@@ -6,9 +6,9 @@ using Rage;
 
 namespace Officer_Status_Plugin
 {
-    class Utilities
+    internal static class Utilities
     {
-        public static bool IsLSPDFRPluginRunning(string Plugin, Version minversion = null)
+        internal static bool IsLSPDFRPluginRunning(string Plugin, Version minversion = null)
         {
             foreach (Assembly assembly in Functions.GetAllUserPlugins())
             {
@@ -21,7 +21,7 @@ namespace Officer_Status_Plugin
             }
             return false;
         }
-        public static void GetIni()
+        internal static void GetIni()
         {
             KeysConverter kc = new KeysConverter();
 
@@ -29,9 +29,14 @@ namespace Officer_Status_Plugin
             ini.Create();
 
             string menuKey = ini.ReadString("KeyBindings", "menuKey", "F7");
-            
+            Globals.rank = ini.ReadString("Officer", "rank", "CPT");
+            Globals.firstName = ini.ReadString("Officer", "menuKey", "Officer");
+            Globals.lastName = ini.ReadString("Officer", "menuKey", "Pope");
+            Globals.unitNum = ini.ReadString("Officer", "menuKey", "5H65");
+
             try
             {
+                Globals.firstName = Globals.firstName.Substring(0, 1);
                 Globals.menuKey = (Keys)kc.ConvertFromString(menuKey);
             }
             catch

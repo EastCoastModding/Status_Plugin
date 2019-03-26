@@ -25,7 +25,7 @@ namespace Officer_Status_Plugin
                     Vocal_Dispatch_Start.Main();
                 }
 
-                Game.DisplayNotification("~r~" + Globals.PluginName + " v" + Globals.version + " By " + Globals.author + ": ~w~Has loaded successfully, thank you for downloading!");
+                Game.DisplayNotification("~r~" + Globals.PluginName + " v" + Globals.version + ": ~w~Has loaded successfully, thank you for downloading! Welcome on Duty, " + Globals.Unit);
             }
         }
 
