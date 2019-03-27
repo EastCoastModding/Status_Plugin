@@ -130,7 +130,7 @@ namespace Officer_Status_Plugin
         internal bool ShowMe10_41()
         {
             {
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-41 (Begining Duty)");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-41 (Beginning Duty)");
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudio("10_4");
                 return true;

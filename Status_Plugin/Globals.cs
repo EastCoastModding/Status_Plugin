@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows.Forms;
-[assembly: AssemblyFileVersion("1.0.3.5"), AssemblyVersion("1.0.3.5")]
+[assembly: AssemblyFileVersion("1.0.3.6"), AssemblyVersion("1.0.3.6")]
 
 namespace Officer_Status_Plugin
 {

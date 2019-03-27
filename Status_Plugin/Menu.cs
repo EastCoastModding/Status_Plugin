@@ -90,7 +90,7 @@ namespace Officer_Status_Plugin
             mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
             backupMenu.ParentMenu = mainMenu;
             mainMenu.AddItem(menu10_99Item = new UIMenuItem("Panic"));
-            menu10_99Item.HighlightedForeColor = Color.Red; menu10_99Item.HighlightedBackColor = Color.Red;
+            menu10_99Item.BackColor = Color.Red;
 
             mainMenu.RefreshIndex();
             serviceMenu.RefreshIndex();
