@@ -30,9 +30,9 @@ namespace Officer_Status_Plugin
 
             string menuKey = ini.ReadString("KeyBindings", "menuKey", "F7");
             Globals.rank = ini.ReadString("Officer", "rank", "CPT");
-            Globals.firstName = ini.ReadString("Officer", "menuKey", "Officer");
-            Globals.lastName = ini.ReadString("Officer", "menuKey", "Pope");
-            Globals.unitNum = ini.ReadString("Officer", "menuKey", "5H65");
+            Globals.firstName = ini.ReadString("Officer", "firstName", "Officer");
+            Globals.lastName = ini.ReadString("Officer", "lastName", "Pope");
+            Globals.unitNum = ini.ReadString("Officer", "unitNumber", "5H65");
 
             try
             {

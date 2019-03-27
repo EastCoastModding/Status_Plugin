@@ -46,13 +46,13 @@ namespace Officer_Status_Plugin
         {
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
-            mainMenu = new UIMenu("Officer Status Menu", Globals.Unit);
+            mainMenu = new UIMenu("Officer Status Menu", "" + Globals.Unit);
             mainMenu.SetMenuWidthOffset(10);
-            serviceMenu = new UIMenu("Service Status Menu",Globals.Unit);
+            serviceMenu = new UIMenu("Service Status Menu", "" + Globals.Unit);
             serviceMenu.SetMenuWidthOffset(10);
-            generalMenu = new UIMenu("General Status Menu",Globals.Unit);
+            generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
             generalMenu.SetMenuWidthOffset(10);
-            backupMenu = new UIMenu("Backup Status Menu",Globals.Unit);
+            backupMenu = new UIMenu("Backup Status Menu", "" + Globals.Unit);
             backupMenu.SetMenuWidthOffset(10);
 
             _MenuPool.Add(mainMenu);
