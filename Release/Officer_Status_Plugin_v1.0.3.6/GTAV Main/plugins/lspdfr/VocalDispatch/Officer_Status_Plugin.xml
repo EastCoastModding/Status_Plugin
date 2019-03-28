@@ -134,6 +134,12 @@
       <Word PreferredText="fifty" AcceptedAlternates="50"/>
       <Word PreferredText="three" AcceptedAlternates="3"/>
     </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_71" Priority="10">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="seventy" AcceptedAlternates="70"/>
+      <Word PreferredText="one" AcceptedAlternates="1"/>
+    </Phrase>
     <Phrase Event="VocalDispatch.AcceptCallout" Priority="10">
       <Word PreferredText="show" AcceptedAlternates="i"/>
       <Word PreferredText="me" AcceptedAlternates="am"/>

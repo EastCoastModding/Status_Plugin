@@ -1,11 +1,10 @@
-﻿using System;
-using LSPD_First_Response.Mod.API;
+﻿using LSPD_First_Response.Mod.API;
 using Rage;
 using UltimateBackup;
 
-namespace Officer_Status_Plugin
+namespace Officer_Status_Plugin.NorthCarolina
 {
-    internal class TS10_11Funcs
+    internal class TrafficStop
     {
         internal bool ShowMe10_11O1()
         {
@@ -17,7 +16,6 @@ namespace Officer_Status_Plugin
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
             return true;
         }
-
         internal bool ShowMe10_11O2()
         {
             Functions.SetPlayerAvailableForCalls(false);
@@ -28,7 +26,6 @@ namespace Officer_Status_Plugin
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
             return true;
         }
-
         internal bool ShowMe10_11O3()
         {
             Functions.SetPlayerAvailableForCalls(false);
@@ -39,7 +36,6 @@ namespace Officer_Status_Plugin
             Functions.PlayScannerAudio("10_4 IS BACKUP_REQUIRED");
             return true;
         }
-
         internal bool ShowMe10_11O4()
         {
             Functions.SetPlayerAvailableForCalls(false);
@@ -51,6 +47,21 @@ namespace Officer_Status_Plugin
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED PROCEED_WITH_CAUTION", Game.LocalPlayer.Character.Position);
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~10-4, Units Responding");
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": UltimateBackup is required for this feature.");
+            }
+            return true;
+        }
+        internal bool ShowMeCode5()
+        {
+            if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+            {
+                Controls.requestFelonyBackupFromVocalDispatch();
+                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+                Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you Code 5 (Felony Stop)");
             }
             else
             {

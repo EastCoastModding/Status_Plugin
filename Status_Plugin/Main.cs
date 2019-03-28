@@ -16,13 +16,17 @@ namespace Officer_Status_Plugin
         {
             if (onDuty)
             {
-                Menu.Main();
-
                 Utilities.GetIni();
 
-                if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
+                if (Globals.State == "NorthCarolina")
                 {
-                    Vocal_Dispatch_Start.Main();
+                    NorthCarolina.Menu.Main();
+
+                    if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
+                    {
+                        NorthCarolina.Vocal_Dispatch_Start.Main();
+                    }
+
                 }
 
                 Game.DisplayNotification("~r~" + Globals.PluginName + " v" + Globals.version + " By OfficerPope: ~w~Has loaded successfully, thank you for downloading! Welcome on Duty, " + Globals.Unit);
@@ -31,7 +35,16 @@ namespace Officer_Status_Plugin
 
         public override void Finally()
         {
-            Menu.Stop();
+            if (Globals.State == "NorthCarolina")
+            {
+                NorthCarolina.Menu.Stop();
+
+                if (Utilities.IsLSPDFRPluginRunning("VocalDispatch"))
+                {
+                    NorthCarolina.Vocal_Dispatch_Start.Stop();
+                }
+
+            }
 
             Game.LogTrivial(Globals.PluginName + " has cleaned up.");
         }

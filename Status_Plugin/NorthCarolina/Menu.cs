@@ -1,12 +1,9 @@
-﻿using System;
-using Rage;
+﻿using Rage;
 using RAGENativeUI;
 using RAGENativeUI.Elements;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Collections.Generic;
 
-namespace Officer_Status_Plugin
+namespace Officer_Status_Plugin.NorthCarolina
 {
     internal class Menu
     {
@@ -30,6 +27,7 @@ namespace Officer_Status_Plugin
         private static UIMenuItem menu10_51Item;
         private static UIMenuItem menu10_52Item;
         private static UIMenuItem menu10_53Item;
+        private static UIMenuItem menu10_71Item;
         private static UIMenuItem menu10_99Item;
         private static UIMenuItem menuAffirmativeItem;
         private static UIMenuItem menuNegativeItem;
@@ -42,12 +40,40 @@ namespace Officer_Status_Plugin
         private static UIMenu backupMenu;
         private static MenuPool _MenuPool;
 
-        public static void Main()
+        internal static void MainMenu()
+        {
+            mainMenu = new UIMenu("Officer Status Menu", "" + Globals.Unit);
+            mainMenu.SetMenuWidthOffset(10);
+
+            _MenuPool.Add(mainMenu);
+
+            mainMenu.AddItem(menuGeneralItem = new UIMenuItem("General Statuses"));
+            mainMenu.BindMenuToItem(generalMenu, menuGeneralItem);
+            generalMenu.ParentMenu = mainMenu;
+            mainMenu.AddItem(menuServiceItem = new UIMenuItem("Service Statuses"));
+            mainMenu.BindMenuToItem(serviceMenu, menuServiceItem);
+            serviceMenu.ParentMenu = mainMenu;
+            mainMenu.AddItem(menuBackupItem = new UIMenuItem("Backup Statuses"));
+            mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
+            backupMenu.ParentMenu = mainMenu;
+            mainMenu.AddItem(menu10_99Item = new UIMenuItem("Panic"));
+            menu10_99Item.BackColor = Color.Red;
+            menu10_99Item.HighlightedBackColor = Color.Red;
+
+            mainMenu.RefreshIndex();
+
+            mainMenu.OnItemSelect += OnItemSelect;
+
+            mainMenu.AllowCameraMovement = true;
+            mainMenu.MouseControlsEnabled = false;
+        }
+
+        internal static void Main()
         {
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
-            mainMenu = new UIMenu("Officer Status Menu", "" + Globals.Unit);
-            mainMenu.SetMenuWidthOffset(10);
+
+            MainMenu();
             serviceMenu = new UIMenu("Service Status Menu", "" + Globals.Unit);
             serviceMenu.SetMenuWidthOffset(10);
             generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
@@ -55,7 +81,6 @@ namespace Officer_Status_Plugin
             backupMenu = new UIMenu("Backup Status Menu", "" + Globals.Unit);
             backupMenu.SetMenuWidthOffset(10);
 
-            _MenuPool.Add(mainMenu);
             _MenuPool.Add(serviceMenu);
             _MenuPool.Add(generalMenu);
             _MenuPool.Add(backupMenu);
@@ -79,31 +104,16 @@ namespace Officer_Status_Plugin
             backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10-51", "~g~Request a Tow Truck"));
             backupMenu.AddItem(menu10_52Item = new UIMenuItem(">>10-52", "~g~Request an EMS"));
             backupMenu.AddItem(menu10_53Item = new UIMenuItem(">>10-53", "~g~Request Fire Department"));
+            backupMenu.AddItem(menu10_71Item = new UIMenuItem(">>10-71", "~g~Request Supervisor"));
 
-            mainMenu.AddItem(menuGeneralItem = new UIMenuItem("General Statuses"));
-            mainMenu.BindMenuToItem(generalMenu, menuGeneralItem);
-            generalMenu.ParentMenu = mainMenu;
-            mainMenu.AddItem(menuServiceItem = new UIMenuItem("Service Statuses"));
-            mainMenu.BindMenuToItem(serviceMenu, menuServiceItem);
-            serviceMenu.ParentMenu = mainMenu;
-            mainMenu.AddItem(menuBackupItem = new UIMenuItem("Backup Statuses"));
-            mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
-            backupMenu.ParentMenu = mainMenu;
-            mainMenu.AddItem(menu10_99Item = new UIMenuItem("Panic"));
-            menu10_99Item.BackColor = Color.Red;
-
-            mainMenu.RefreshIndex();
             serviceMenu.RefreshIndex();
             generalMenu.RefreshIndex();
             backupMenu.RefreshIndex();
 
-            mainMenu.OnItemSelect += OnItemSelect;
             generalMenu.OnItemSelect += OnItemSelect;
             serviceMenu.OnItemSelect += OnItemSelect;
             backupMenu.OnItemSelect += OnItemSelect;
 
-            mainMenu.AllowCameraMovement = true;
-            mainMenu.MouseControlsEnabled = false;
             serviceMenu.AllowCameraMovement = true;
             serviceMenu.MouseControlsEnabled = false;
             generalMenu.AllowCameraMovement = true;
@@ -117,14 +127,17 @@ namespace Officer_Status_Plugin
 
         private static void OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            Statuses statuses = new Statuses();
-            TS10_11Funcs ts10_11Funcs = new TS10_11Funcs();
-            if(sender == generalMenu && selectedItem == menu10_11List) { } else { _MenuPool.CloseAllMenus(); }
+            General general = new General();
+            Backup backup = new Backup();
+            Services services = new Services();
+            TrafficStop trafficStop = new TrafficStop();
+
+            if (sender == generalMenu && selectedItem == menu10_11List) { } else { _MenuPool.CloseAllMenus(); }
             if(sender == mainMenu)
             {
                 if(selectedItem == menu10_99Item)
                 {
-                    statuses.ShowMe10_99();
+                    general.ShowMe10_99();
                 }
             }
             if(sender == generalMenu)
@@ -134,36 +147,36 @@ namespace Officer_Status_Plugin
                     string selectedListItem = menu10_11List.SelectedItem.ToString();
                     if (selectedListItem == "Occupied x1")
                     {
-                        ts10_11Funcs.ShowMe10_11O1();
+                        trafficStop.ShowMe10_11O1();
                     }
                     if (selectedListItem == "Occupied x2")
                     {
-                        ts10_11Funcs.ShowMe10_11O2();
+                        trafficStop.ShowMe10_11O2();
                     }
                     if (selectedListItem == "Occupied x3")
                     {
-                        ts10_11Funcs.ShowMe10_11O3();
+                        trafficStop.ShowMe10_11O3();
                     }
                     if (selectedListItem == "Occupied x4")
                     {
-                        ts10_11Funcs.ShowMe10_11O4();
+                        trafficStop.ShowMe10_11O4();
                     }
                 }
-                else if (selectedItem == menu10_15Item) { statuses.ShowMe10_15(); }
-                else if (selectedItem == menu10_19Item) { statuses.ShowMe10_19(); }
-                else if (selectedItem == menu10_23Item) { statuses.ShowMe10_23(); }
-                else if (selectedItem == menuCode5Item) { statuses.ShowMeCode5(); }
-                else if (selectedItem == menuAffirmativeItem) { statuses.Affirmative(); }
-                else if (selectedItem == menuNegativeItem) { statuses.Negative(); }
+                else if (selectedItem == menu10_15Item) { general.ShowMe10_15(); }
+                else if (selectedItem == menu10_19Item) { general.ShowMe10_19(); }
+                else if (selectedItem == menu10_23Item) { general.ShowMe10_23(); }
+                else if (selectedItem == menuCode5Item) { trafficStop.ShowMeCode5(); }
+                else if (selectedItem == menuAffirmativeItem) { general.Affirmative(); }
+                else if (selectedItem == menuNegativeItem) { general.Negative(); }
             }
             if(sender == serviceMenu)
             {
-                if (selectedItem == menu10_5Item) { statuses.ShowMe10_5();  }
-                else if (selectedItem == menu10_6Item) { statuses.ShowMe10_6(); }
-                else if (selectedItem == menu10_7Item) { statuses.ShowMe10_7(); }
-                else if (selectedItem == menu10_8Item) { statuses.ShowMe10_8(); }
-                else if (selectedItem == menu10_41Item) { statuses.ShowMe10_41(); }
-                else if (selectedItem == menu10_42Item) { statuses.ShowMe10_42(); }
+                if (selectedItem == menu10_5Item) { services.ShowMe10_5();  }
+                else if (selectedItem == menu10_6Item) { services.ShowMe10_6(); }
+                else if (selectedItem == menu10_7Item) { services.ShowMe10_7(); }
+                else if (selectedItem == menu10_8Item) { services.ShowMe10_8(); }
+                else if (selectedItem == menu10_41Item) { services.ShowMe10_41(); }
+                else if (selectedItem == menu10_42Item) { services.ShowMe10_42(); }
             }
             if(sender == backupMenu)
             {
@@ -172,28 +185,32 @@ namespace Officer_Status_Plugin
                     string selectedListItem = menu10_32List.SelectedItem.ToString();
                     if (selectedListItem == "Code 2")
                     {
-                        statuses.Requesting10_32C2();
+                        backup.Requesting10_32C2();
                     }
                     else if (selectedListItem == "Code 3")
                     {
-                        statuses.Requesting10_32C3();
+                        backup.Requesting10_32C3();
                     }
                     else if (selectedListItem == "Female")
                     {
-                        statuses.Requesting10_32F();
+                        backup.Requesting10_32F();
                     }
                 }
                 else if(selectedItem == menu10_51Item)
                 {
-                    statuses.Requesting10_51();
+                    backup.Requesting10_51();
                 }
                 else if(selectedItem == menu10_52Item)
                 {
-                    statuses.Requesting10_52();
+                    backup.Requesting10_52();
                 }
                 else if(selectedItem == menu10_53Item)
                 {
-                    statuses.Requesting10_53();
+                    backup.Requesting10_53();
+                }
+                else if (selectedItem == menu10_71Item)
+                {
+                    backup.Requesting10_71();
                 }
             }
         }
@@ -212,7 +229,7 @@ namespace Officer_Status_Plugin
             }
         }
 
-        public static void Stop()
+        internal static void Stop()
         {
             _MenuPool.CloseAllMenus();
             menuProcessFiber.Abort();

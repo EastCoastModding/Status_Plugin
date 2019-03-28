@@ -1,20 +1,21 @@
 ﻿using System.Reflection;
 using System.Windows.Forms;
-[assembly: AssemblyFileVersion("1.0.3.6"), AssemblyVersion("1.0.3.6")]
+[assembly: AssemblyFileVersion("1.0.4.0"), AssemblyVersion("1.0.4.0")]
 
 namespace Officer_Status_Plugin
 {
-    static class Globals
+    internal static class Globals
     {
-        public static Keys menuKey;
-        public static string rank;
-        public static string firstName;
-        public static string lastName;
-        public static string unitNum;
-        public static string Unit;
+        internal static Keys menuKey;
+        internal static string rank;
+        internal static string firstName;
+        internal static string lastName;
+        internal static string unitNum;
+        internal static string Unit;
+        internal static string State = "NorthCarolina";
 
-        public readonly static string PluginName = "Officer Status Plugin";
-        public readonly static string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        public static bool IsTSBackupRequired = false;
+        internal static readonly string PluginName = "Officer Status Plugin";
+        internal static readonly string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        internal static bool IsTSBackupRequired = false;
     }
 }
