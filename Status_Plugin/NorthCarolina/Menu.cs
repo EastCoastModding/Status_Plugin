@@ -68,22 +68,11 @@ namespace Officer_Status_Plugin.NorthCarolina
             mainMenu.MouseControlsEnabled = false;
         }
 
-        internal static void Main()
+        internal static void ServiceMenu()
         {
-            menuProcessFiber = new GameFiber(MenuProcess);
-            _MenuPool = new MenuPool();
-
-            MainMenu();
             serviceMenu = new UIMenu("Service Status Menu", "" + Globals.Unit);
             serviceMenu.SetMenuWidthOffset(10);
-            generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
-            generalMenu.SetMenuWidthOffset(10);
-            backupMenu = new UIMenu("Backup Status Menu", "" + Globals.Unit);
-            backupMenu.SetMenuWidthOffset(10);
-
             _MenuPool.Add(serviceMenu);
-            _MenuPool.Add(generalMenu);
-            _MenuPool.Add(backupMenu);
 
             serviceMenu.AddItem(menu10_5Item = new UIMenuItem(">>10-5", "~g~Break"));
             serviceMenu.AddItem(menu10_6Item = new UIMenuItem(">>10-6", "~g~Busy"));
@@ -92,7 +81,22 @@ namespace Officer_Status_Plugin.NorthCarolina
             serviceMenu.AddItem(menu10_41Item = new UIMenuItem(">>10-41", "~g~Beginning Tour of Duty"));
             serviceMenu.AddItem(menu10_42Item = new UIMenuItem(">>10-42", "~g~Ending Tour of Duty"));
 
-            generalMenu.AddItem(menu10_11List = new UIMenuListItem(">>10-11","~g~Traffic Stop", List10_11));
+            serviceMenu.RefreshIndex();
+
+            serviceMenu.OnItemSelect += OnItemSelect;
+
+
+            serviceMenu.AllowCameraMovement = true;
+            serviceMenu.MouseControlsEnabled = false;
+        }
+
+        internal static void GeneralMenu()
+        {
+            generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
+            generalMenu.SetMenuWidthOffset(10);
+            _MenuPool.Add(generalMenu);
+
+            generalMenu.AddItem(menu10_11List = new UIMenuListItem(">>10-11", "~g~Traffic Stop", List10_11));
             generalMenu.AddItem(menu10_15Item = new UIMenuItem(">>10-15", "~g~Suspect in Custody, Returning to Station"));
             generalMenu.AddItem(menu10_19Item = new UIMenuItem(">>10-19", "~g~Returning to Station"));
             generalMenu.AddItem(menu10_23Item = new UIMenuItem(">>10-23", "~g~Arrived on Scene"));
@@ -100,26 +104,41 @@ namespace Officer_Status_Plugin.NorthCarolina
             generalMenu.AddItem(menuAffirmativeItem = new UIMenuItem(">>Affirmative"));
             generalMenu.AddItem(menuNegativeItem = new UIMenuItem(">>Negative"));
 
+            generalMenu.RefreshIndex();
+            generalMenu.OnItemSelect += OnItemSelect;
+
+            generalMenu.AllowCameraMovement = true;
+            generalMenu.MouseControlsEnabled = false;
+        }
+
+        internal static void BackupMenu()
+        {
+            backupMenu = new UIMenu("Backup Status Menu", "" + Globals.Unit);
+            backupMenu.SetMenuWidthOffset(10);
+            _MenuPool.Add(backupMenu);
+
             backupMenu.AddItem(menu10_32List = new UIMenuListItem(">>10-32", "~g~General Backup", List10_32));
             backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10-51", "~g~Request a Tow Truck"));
             backupMenu.AddItem(menu10_52Item = new UIMenuItem(">>10-52", "~g~Request an EMS"));
             backupMenu.AddItem(menu10_53Item = new UIMenuItem(">>10-53", "~g~Request Fire Department"));
             backupMenu.AddItem(menu10_71Item = new UIMenuItem(">>10-71", "~g~Request Supervisor"));
 
-            serviceMenu.RefreshIndex();
-            generalMenu.RefreshIndex();
             backupMenu.RefreshIndex();
-
-            generalMenu.OnItemSelect += OnItemSelect;
-            serviceMenu.OnItemSelect += OnItemSelect;
             backupMenu.OnItemSelect += OnItemSelect;
 
-            serviceMenu.AllowCameraMovement = true;
-            serviceMenu.MouseControlsEnabled = false;
-            generalMenu.AllowCameraMovement = true;
-            generalMenu.MouseControlsEnabled = false;
             backupMenu.AllowCameraMovement = true;
             backupMenu.MouseControlsEnabled = false;
+        }
+
+        internal static void Main()
+        {
+            menuProcessFiber = new GameFiber(MenuProcess);
+            _MenuPool = new MenuPool();
+
+            MainMenu();
+            ServiceMenu();
+            GeneralMenu();
+            BackupMenu();
 
             menuProcessFiber.Start();
             Game.Console.Print(Globals.PluginName + ": Menus Initialised");
