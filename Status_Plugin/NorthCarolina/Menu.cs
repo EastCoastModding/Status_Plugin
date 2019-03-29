@@ -9,6 +9,7 @@ namespace Officer_Status_Plugin.NorthCarolina
     {
         private static UIMenuItem menuGeneralItem;
         private static UIMenuItem menuServiceItem;
+        private static UIMenuItem menuSignalItem;
         private static UIMenuItem menuBackupItem;
 
         private static UIMenuItem menu10_5Item;
@@ -21,7 +22,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static UIMenuItem menu10_19Item;
         private static UIMenuItem menu10_23Item;
         private static UIMenuListItem menu10_32List;
-        private static object[] List10_32 = new object[] { "Code 2", "Code 3", "Female"};
+        private static object[] List10_32 = new object[] { "Code 2", "Code 3", "Female", "Traffic Stop", "K9"};
         private static UIMenuItem menu10_41Item;
         private static UIMenuItem menu10_42Item;
         private static UIMenuItem menu10_51Item;
@@ -32,15 +33,17 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static UIMenuItem menuAffirmativeItem;
         private static UIMenuItem menuNegativeItem;
         private static UIMenuItem menuCode5Item;
+        private static UIMenuItem menuSignal100;
 
         private static GameFiber menuProcessFiber;
         private static UIMenu mainMenu;
         private static UIMenu serviceMenu;
+        private static UIMenu signalMenu;
         private static UIMenu generalMenu;
         private static UIMenu backupMenu;
         private static MenuPool _MenuPool;
 
-        internal static void MainMenu()
+        internal static bool MainMenu()
         {
             mainMenu = new UIMenu("Officer Status Menu", "" + Globals.Unit);
             mainMenu.SetMenuWidthOffset(10);
@@ -53,6 +56,9 @@ namespace Officer_Status_Plugin.NorthCarolina
             mainMenu.AddItem(menuServiceItem = new UIMenuItem("Service Statuses"));
             mainMenu.BindMenuToItem(serviceMenu, menuServiceItem);
             serviceMenu.ParentMenu = mainMenu;
+            mainMenu.AddItem(menuSignalItem = new UIMenuItem("Signal Statuses"));
+            mainMenu.BindMenuToItem(signalMenu, menuSignalItem);
+            signalMenu.ParentMenu = mainMenu;
             mainMenu.AddItem(menuBackupItem = new UIMenuItem("Backup Statuses"));
             mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
             backupMenu.ParentMenu = mainMenu;
@@ -66,9 +72,11 @@ namespace Officer_Status_Plugin.NorthCarolina
 
             mainMenu.AllowCameraMovement = true;
             mainMenu.MouseControlsEnabled = false;
+
+            return true;
         }
 
-        internal static void ServiceMenu()
+        internal static bool ServiceMenu()
         {
             serviceMenu = new UIMenu("Service Status Menu", "" + Globals.Unit);
             serviceMenu.SetMenuWidthOffset(10);
@@ -88,9 +96,30 @@ namespace Officer_Status_Plugin.NorthCarolina
 
             serviceMenu.AllowCameraMovement = true;
             serviceMenu.MouseControlsEnabled = false;
+
+            return true;
         }
 
-        internal static void GeneralMenu()
+        internal static bool SignalMenu()
+        {
+            signalMenu = new UIMenu("Signal Status Menu", "" + Globals.Unit);
+            signalMenu.SetMenuWidthOffset(10);
+            _MenuPool.Add(signalMenu);
+
+            signalMenu.AddItem(menuSignal100 = new UIMenuItem("Signal 100", "~g~Opens/Closes Roads"));
+
+            signalMenu.RefreshIndex();
+
+            signalMenu.OnItemSelect += OnItemSelect;
+
+
+            signalMenu.AllowCameraMovement = true;
+            signalMenu.MouseControlsEnabled = false;
+
+            return true;
+        }
+
+        internal static bool GeneralMenu()
         {
             generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
             generalMenu.SetMenuWidthOffset(10);
@@ -109,9 +138,11 @@ namespace Officer_Status_Plugin.NorthCarolina
 
             generalMenu.AllowCameraMovement = true;
             generalMenu.MouseControlsEnabled = false;
+
+            return true;
         }
 
-        internal static void BackupMenu()
+        internal static bool BackupMenu()
         {
             backupMenu = new UIMenu("Backup Status Menu", "" + Globals.Unit);
             backupMenu.SetMenuWidthOffset(10);
@@ -128,6 +159,8 @@ namespace Officer_Status_Plugin.NorthCarolina
 
             backupMenu.AllowCameraMovement = true;
             backupMenu.MouseControlsEnabled = false;
+
+            return true;
         }
 
         internal static void Main()
@@ -135,10 +168,11 @@ namespace Officer_Status_Plugin.NorthCarolina
             menuProcessFiber = new GameFiber(MenuProcess);
             _MenuPool = new MenuPool();
 
-            MainMenu();
-            ServiceMenu();
-            GeneralMenu();
-            BackupMenu();
+            GameFiber.SleepUntil(ServiceMenu, 1000);
+            GameFiber.SleepUntil(SignalMenu, 1000);
+            GameFiber.SleepUntil(GeneralMenu, 1000);
+            GameFiber.SleepUntil(BackupMenu, 1000);
+            GameFiber.SleepUntil(MainMenu, 1000);
 
             menuProcessFiber.Start();
             Game.Console.Print(Globals.PluginName + ": Menus Initialised");
@@ -149,6 +183,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             General general = new General();
             Backup backup = new Backup();
             Services services = new Services();
+            Signals signals = new Signals();
             TrafficStop trafficStop = new TrafficStop();
 
             if (sender == generalMenu && selectedItem == menu10_11List) { } else { _MenuPool.CloseAllMenus(); }
@@ -197,6 +232,13 @@ namespace Officer_Status_Plugin.NorthCarolina
                 else if (selectedItem == menu10_41Item) { services.ShowMe10_41(); }
                 else if (selectedItem == menu10_42Item) { services.ShowMe10_42(); }
             }
+            if(sender == signalMenu)
+            {
+                if(selectedItem == menuSignal100)
+                {
+                    signals.Signalling100();
+                }
+            }
             if(sender == backupMenu)
             {
                 if (selectedItem == menu10_32List)
@@ -213,6 +255,14 @@ namespace Officer_Status_Plugin.NorthCarolina
                     else if (selectedListItem == "Female")
                     {
                         backup.Requesting10_32F();
+                    }
+                    else if (selectedListItem == "Traffic Stop")
+                    {
+                        backup.Requesting10_32TS();
+                    }
+                    else if (selectedListItem == "K9")
+                    {
+                        backup.Requesting10_32K9();
                     }
                 }
                 else if(selectedItem == menu10_51Item)

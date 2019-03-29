@@ -5,21 +5,20 @@ namespace Officer_Status_Plugin.NorthCarolina
 {
     internal class Signals
     {
-        bool signalling100 = false;
         internal bool Signalling100()
         {
             if (Utilities.IsLSPDFRPluginRunning("StopThePed"))
             {
-                if (signalling100)
+                if (Globals.signalling100)
                 {
-                    signalling100 = false;
+                    Globals.signalling100 = false;
                     StopThePed.Actions.deactivateTrafficControl();
                     Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Removing Signal 100");
                 }
                 else
                 {
-                    signalling100 = true;
-                    StopThePed.Actions.activateTrafficControl(true);
+                    Globals.signalling100 = true;
+                    StopThePed.Actions.activateTrafficControl(false);
                     Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Initializing Signal 100");
                 }
             }

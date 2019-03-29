@@ -53,6 +53,32 @@ namespace Officer_Status_Plugin.NorthCarolina
         }
         internal bool Requesting10_32TS()
         {
+            if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+            {
+                Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal , "LocalPatrol");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Code 2 Unit");
+                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+                Functions.PlayScannerAudio("10_4");
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Ultimate Backup for this Feature");
+            }
+            return true;
+        }
+        internal bool Requesting10_32K9()
+        {
+            if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+            {
+                Controls.requestOnSceneBackup(true, OnSceneResponseType.Code2, "K9LocalPatrol");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching K9 Unit");
+                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+                Functions.PlayScannerAudio("10_4");
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Ultimate Backup for this Feature");
+            }
             return true;
         }
         internal bool Requesting10_51()

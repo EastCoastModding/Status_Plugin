@@ -102,6 +102,22 @@
       <Word PreferredText="two" AcceptedAlternates="2"/>
       <Word PreferredText="female"/>
     </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_32K9" Priority="11">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="thirty" AcceptedAlternates="30"/>
+      <Word PreferredText="two" AcceptedAlternates="2"/>
+      <Word PreferredText="k" AcceptedAlternates="kay"/>
+      <Word PreferredText="nine" AcceptedAlternates="9"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_32TS" Priority="11">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="thirty" AcceptedAlternates="30"/>
+      <Word PreferredText="two" AcceptedAlternates="2"/>
+      <Word PreferredText="traffic"/>
+      <Word PreferredText="stop"/>
+    </Phrase>
     <Phrase Event="StatusPlugin.ShowMe10_41" Priority="10">
       <Word PreferredText="show" AcceptedAlternates="i"/>
       <Word PreferredText="me" AcceptedAlternates="am"/>
@@ -134,7 +150,7 @@
       <Word PreferredText="fifty" AcceptedAlternates="50"/>
       <Word PreferredText="three" AcceptedAlternates="3"/>
     </Phrase>
-    <Phrase Event="StatusPlugin.Requesting10_71" Priority="10">
+    <Phrase Event="StatusPlugin.Requesting10_71" Priority="15">
       <Word PreferredText="requesting" AcceptedAlternates="send"/>
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="seventy" AcceptedAlternates="70"/>
@@ -147,12 +163,26 @@
       <Word PreferredText="ninety" AcceptedAlternates="90"/>
       <Word PreferredText="seven" AcceptedAlternates="7"/>
     </Phrase>
+    
     <Phrase Event="StatusPlugin.ShowMe10_99" Priority="10">
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="ninety" AcceptedAlternates="90"/>
       <Word PreferredText="nine" AcceptedAlternates="9"/>
     </Phrase>
-
+    <Phrase Event="StatusPlugin.ShowMe10_99" Priority="10">
+      <Word PreferredText="shots"/>
+      <Word PreferredText="fired"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.ShowMe10_99" Priority="10">
+      <Word PreferredText="officer"/>
+      <Word PreferredText="down"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.ShowMe10_99" Priority="10">
+      <Word PreferredText="suspect"/>
+      <Word PreferredText="has"/>
+      <Word PreferredText="knife"/>
+    </Phrase>
+    
     <Phrase Event="StatusPlugin.Affirmative" Priority="10">
       <Word PreferredText="affirmative" AcceptedAlternates="yes"/>
     </Phrase>
@@ -165,6 +195,13 @@
       <Word PreferredText="me" AcceptedAlternates="am"/>
       <Word PreferredText="code"/>
       <Word PreferredText="five" AcceptedAlternates="5"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.Signal100" Priority="10">
+      <Word PreferredText="show" AcceptedAlternates="i"/>
+      <Word PreferredText="me" AcceptedAlternates="am"/>
+      <Word PreferredText="signalling" AcceptedAlternatives="signal"/>
+      <Word PreferredText="one" AcceptedAlternates="1"/>
+      <Word PreferredText="hundred"/>
     </Phrase>
   </Phrases>
 </VocalDispatch>
