@@ -7,10 +7,6 @@ namespace Officer_Status_Plugin
     {
         public override void Initialize()
         {
-            Utilities.GetDependencies();
-
-            Utilities.GetIni();
-
             Functions.OnOnDutyStateChanged += Functions_OnOnDutyStateChanged;
 
             Game.LogTrivial(Globals.PluginName + Globals.version + " has been Initialized.");
@@ -20,6 +16,10 @@ namespace Officer_Status_Plugin
         {
             if (onDuty)
             {
+                Utilities.GetDependencies();
+
+                Utilities.GetIni();
+
                 if (Globals.State == "NorthCarolina")
                 {
                     NorthCarolina.Menu.Main();

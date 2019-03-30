@@ -1,0 +1,10 @@
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\bin\Debug\OPCallouts.dll
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\bin\Debug\OPCallouts.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\bin\Debug\LSPD First Response.dll
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\bin\Debug\RagePluginHookSDK.dll
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\obj\Debug\OPCallouts.csprojAssemblyReference.cache
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\obj\Debug\OPCallouts.csproj.CoreCompileInputs.cache
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\obj\Debug\OPCallouts.csproj.CopyComplete
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\obj\Debug\OPCallouts.dll
+C:\Users\olive\Desktop\LSPDFR Modding\OPProjects\OPCallouts\obj\Debug\OPCallouts.pdb

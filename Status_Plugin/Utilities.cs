@@ -27,10 +27,12 @@ namespace Officer_Status_Plugin
 
         internal static void GetDependencies()
         {
-            Globals.UltimateBackupDep = File.Exists("UltimateBackup.dll");
-            if(!Globals.UltimateBackupDep) { Game.Console.Print("Officer Status Plugin is optimised for use with UltimateBackup"); }
-            Globals.StopThePedDep = File.Exists("StopThePed.dll");
-            Globals.VocalDispatchDep = File.Exists("VocalDispatch.dll");
+            Globals.UltimateBackupDep = IsLSPDFRPluginRunning("UltimateBackup");
+            if(!Globals.UltimateBackupDep) { Game.DisplayNotification("Officer Status Plugin is optimised for use with UltimateBackup, It is highly advised to be installed!"); }
+            Globals.StopThePedDep = IsLSPDFRPluginRunning("StopThePed");
+            if (!Globals.UltimateBackupDep) { Game.DisplayNotification("Officer Status Plugin is optimised for use with StopThePed, It is highly advised to be installed!"); }
+            Globals.VocalDispatchDep = IsLSPDFRPluginRunning("VocalDispatch");
+            if (!Globals.UltimateBackupDep) { Game.DisplayNotification("Officer Status Plugin is optimised for use with VocalDispatch, It is highly advised to be installed!"); }
         }
 
         internal static void GetIni()
