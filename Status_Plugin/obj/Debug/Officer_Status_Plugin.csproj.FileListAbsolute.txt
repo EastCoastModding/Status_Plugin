@@ -5,7 +5,6 @@ C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Ulti
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\VocalDispatch.xml
-C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csprojAssemblyReference.cache
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csproj.CoreCompileInputs.cache
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csproj.CopyComplete
 C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\Officer_Status_Plugin.dll
@@ -22,3 +21,4 @@ C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_St
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csproj.CopyComplete
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.dll
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csprojAssemblyReference.cache

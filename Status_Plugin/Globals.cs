@@ -18,5 +18,9 @@ namespace Officer_Status_Plugin
         internal static readonly string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         internal static bool IsTSBackupRequired = false;
         internal static bool signalling100 = false;
+
+        internal static bool UltimateBackupDep;
+        internal static bool StopThePedDep;
+        internal static bool VocalDispatchDep;
     }
 }

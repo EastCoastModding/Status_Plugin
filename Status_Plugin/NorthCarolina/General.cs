@@ -4,9 +4,9 @@ using UltimateBackup;
 
 namespace Officer_Status_Plugin.NorthCarolina
 {
-    internal class General
+    internal static class General
     {
-        internal bool ShowMe10_15()
+        internal static bool ShowMe10_15()
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-15 (Suspect in Custody, Returning to Station)");
@@ -14,7 +14,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_19()
+        internal static bool ShowMe10_19()
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-19 (Returning to Station)");
@@ -22,25 +22,25 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_23()
+        internal static bool ShowMe10_23()
         {
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-23 (Arrived on Scene)");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool Requesting10_28()
+        internal static bool Requesting10_28()
         {
             return true;
         }
-        internal bool ShowMe10_99()
+        internal static bool ShowMe10_99()
         {
-            if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+            if (Globals.UltimateBackupDep)
             {
-                Controls.requestPanicBackup(true);
+                Backup.Requesting10_99();
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudioUsingPosition("PANIC_BUTTON BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~All available units respond code 3");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~All available units responding code 3");
             }
             else
             {
@@ -49,23 +49,20 @@ namespace Officer_Status_Plugin.NorthCarolina
             return true;
         }
 
-        internal bool Affirmative()
+        internal static bool Affirmative()
         {
             if (Globals.IsTSBackupRequired)
             {
                 if (Functions.IsPlayerPerformingPullover())
                 {
-                    if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
+                    if (Globals.UltimateBackupDep)
                     {
-                        Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
+                        Backup.Requesting10_32TS();
                         Globals.IsTSBackupRequired = false;
-                        GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                        Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~10-4, Units Responding");
                     }
                     else
                     {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": UltimateBackup is required for this feature.");
+                        Game.DisplayNotification("~r~" + Globals.PluginName + ": Ultimate Backup is required for this feature.");
                     }
                 }
                 else
@@ -75,7 +72,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             }
             return true;
         }
-        internal bool Negative()
+        internal static bool Negative()
         {
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~10-4");
             GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);

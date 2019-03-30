@@ -3,9 +3,9 @@ using Rage;
 
 namespace Officer_Status_Plugin.NorthCarolina
 {
-    internal class Services
+    internal static class Services
     {
-        internal bool ShowMe10_5()
+        internal static bool ShowMe10_5()
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-5 (Break)");
@@ -13,7 +13,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_6()
+        internal static bool ShowMe10_6()
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-6 (Busy)");
@@ -21,7 +21,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_7()
+        internal static bool ShowMe10_7()
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-7 (Out of Service)");
@@ -29,7 +29,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_8()
+        internal static bool ShowMe10_8()
         {
             Functions.SetPlayerAvailableForCalls(true);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-8 (Available)");
@@ -37,7 +37,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             Functions.PlayScannerAudio("10_4");
             return true;
         }
-        internal bool ShowMe10_41()
+        internal static bool ShowMe10_41()
         {
             {
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you 10-41 (Beginning Duty)");
@@ -46,7 +46,7 @@ namespace Officer_Status_Plugin.NorthCarolina
                 return true;
             }
         }
-        internal bool ShowMe10_42()
+        internal static bool ShowMe10_42()
         {
             {
                 Functions.SetPlayerAvailableForCalls(false);

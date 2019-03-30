@@ -9,7 +9,6 @@ namespace Officer_Status_Plugin.NorthCarolina
     {
         private static UIMenuItem menuGeneralItem;
         private static UIMenuItem menuServiceItem;
-        private static UIMenuItem menuSignalItem;
         private static UIMenuItem menuBackupItem;
 
         private static UIMenuItem menu10_5Item;
@@ -17,28 +16,27 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static UIMenuItem menu10_7Item;
         private static UIMenuItem menu10_8Item;
         private static UIMenuListItem menu10_11List;
-        private static object[] List10_11 = new object[] { "Occupied x1", "Occupied x2", "Occupied x3", "Occupied x4" };
+        private static readonly object[] List10_11 = new object[] { "Occupied x1", "Occupied x2", "Occupied x3", "Occupied x4" };
         private static UIMenuItem menu10_15Item;
         private static UIMenuItem menu10_19Item;
         private static UIMenuItem menu10_23Item;
         private static UIMenuListItem menu10_32List;
-        private static object[] List10_32 = new object[] { "Code 2", "Code 3", "Female", "Traffic Stop", "K9"};
+        private static readonly object[] List10_32 = new object[] { "Code 2", "Code 3", "Female", "Traffic Stop", "K9"};
         private static UIMenuItem menu10_41Item;
         private static UIMenuItem menu10_42Item;
         private static UIMenuItem menu10_51Item;
-        private static UIMenuItem menu10_52Item;
+        private static UIMenuListItem menu10_52Item;
+        private static readonly object[] List10_52 = new object[] { "Injuries", "Fatalities" };
         private static UIMenuItem menu10_53Item;
         private static UIMenuItem menu10_71Item;
         private static UIMenuItem menu10_99Item;
         private static UIMenuItem menuAffirmativeItem;
         private static UIMenuItem menuNegativeItem;
         private static UIMenuItem menuCode5Item;
-        private static UIMenuItem menuSignal100;
 
         private static GameFiber menuProcessFiber;
         private static UIMenu mainMenu;
         private static UIMenu serviceMenu;
-        private static UIMenu signalMenu;
         private static UIMenu generalMenu;
         private static UIMenu backupMenu;
         private static MenuPool _MenuPool;
@@ -56,9 +54,6 @@ namespace Officer_Status_Plugin.NorthCarolina
             mainMenu.AddItem(menuServiceItem = new UIMenuItem("Service Statuses"));
             mainMenu.BindMenuToItem(serviceMenu, menuServiceItem);
             serviceMenu.ParentMenu = mainMenu;
-            mainMenu.AddItem(menuSignalItem = new UIMenuItem("Signal Statuses"));
-            mainMenu.BindMenuToItem(signalMenu, menuSignalItem);
-            signalMenu.ParentMenu = mainMenu;
             mainMenu.AddItem(menuBackupItem = new UIMenuItem("Backup Statuses"));
             mainMenu.BindMenuToItem(backupMenu, menuBackupItem);
             backupMenu.ParentMenu = mainMenu;
@@ -100,25 +95,6 @@ namespace Officer_Status_Plugin.NorthCarolina
             return true;
         }
 
-        internal static bool SignalMenu()
-        {
-            signalMenu = new UIMenu("Signal Status Menu", "" + Globals.Unit);
-            signalMenu.SetMenuWidthOffset(10);
-            _MenuPool.Add(signalMenu);
-
-            signalMenu.AddItem(menuSignal100 = new UIMenuItem("Signal 100", "~g~Opens/Closes Roads"));
-
-            signalMenu.RefreshIndex();
-
-            signalMenu.OnItemSelect += OnItemSelect;
-
-
-            signalMenu.AllowCameraMovement = true;
-            signalMenu.MouseControlsEnabled = false;
-
-            return true;
-        }
-
         internal static bool GeneralMenu()
         {
             generalMenu = new UIMenu("General Status Menu", "" + Globals.Unit);
@@ -150,7 +126,7 @@ namespace Officer_Status_Plugin.NorthCarolina
 
             backupMenu.AddItem(menu10_32List = new UIMenuListItem(">>10-32", "~g~General Backup", List10_32));
             backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10-51", "~g~Request a Tow Truck"));
-            backupMenu.AddItem(menu10_52Item = new UIMenuItem(">>10-52", "~g~Request an EMS"));
+            backupMenu.AddItem(menu10_52Item = new UIMenuListItem(">>10-52", "~g~Request an EMS", List10_52));
             backupMenu.AddItem(menu10_53Item = new UIMenuItem(">>10-53", "~g~Request Fire Department"));
             backupMenu.AddItem(menu10_71Item = new UIMenuItem(">>10-71", "~g~Request Supervisor"));
 
@@ -169,7 +145,6 @@ namespace Officer_Status_Plugin.NorthCarolina
             _MenuPool = new MenuPool();
 
             GameFiber.SleepUntil(ServiceMenu, 1000);
-            GameFiber.SleepUntil(SignalMenu, 1000);
             GameFiber.SleepUntil(GeneralMenu, 1000);
             GameFiber.SleepUntil(BackupMenu, 1000);
             GameFiber.SleepUntil(MainMenu, 1000);
@@ -180,18 +155,12 @@ namespace Officer_Status_Plugin.NorthCarolina
 
         private static void OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            General general = new General();
-            Backup backup = new Backup();
-            Services services = new Services();
-            Signals signals = new Signals();
-            TrafficStop trafficStop = new TrafficStop();
-
             if (sender == generalMenu && selectedItem == menu10_11List) { } else { _MenuPool.CloseAllMenus(); }
             if(sender == mainMenu)
             {
                 if(selectedItem == menu10_99Item)
                 {
-                    general.ShowMe10_99();
+                    General.ShowMe10_99();
                 }
             }
             if(sender == generalMenu)
@@ -201,85 +170,114 @@ namespace Officer_Status_Plugin.NorthCarolina
                     string selectedListItem = menu10_11List.SelectedItem.ToString();
                     if (selectedListItem == "Occupied x1")
                     {
-                        trafficStop.ShowMe10_11O1();
+                        TrafficStop.ShowMe10_11O1();
                     }
                     if (selectedListItem == "Occupied x2")
                     {
-                        trafficStop.ShowMe10_11O2();
+                        TrafficStop.ShowMe10_11O2();
                     }
                     if (selectedListItem == "Occupied x3")
                     {
-                        trafficStop.ShowMe10_11O3();
+                        TrafficStop.ShowMe10_11O3();
                     }
                     if (selectedListItem == "Occupied x4")
                     {
-                        trafficStop.ShowMe10_11O4();
+                        TrafficStop.ShowMe10_11O4();
                     }
                 }
-                else if (selectedItem == menu10_15Item) { general.ShowMe10_15(); }
-                else if (selectedItem == menu10_19Item) { general.ShowMe10_19(); }
-                else if (selectedItem == menu10_23Item) { general.ShowMe10_23(); }
-                else if (selectedItem == menuCode5Item) { trafficStop.ShowMeCode5(); }
-                else if (selectedItem == menuAffirmativeItem) { general.Affirmative(); }
-                else if (selectedItem == menuNegativeItem) { general.Negative(); }
+                else if (selectedItem == menu10_15Item) { General.ShowMe10_15(); }
+                else if (selectedItem == menu10_19Item) { General.ShowMe10_19(); }
+                else if (selectedItem == menu10_23Item) { General.ShowMe10_23(); }
+                else if (selectedItem == menuCode5Item) { TrafficStop.ShowMeCode5(); }
+                else if (selectedItem == menuAffirmativeItem) { General.Affirmative(); }
+                else if (selectedItem == menuNegativeItem) { General.Negative(); }
             }
             if(sender == serviceMenu)
             {
-                if (selectedItem == menu10_5Item) { services.ShowMe10_5();  }
-                else if (selectedItem == menu10_6Item) { services.ShowMe10_6(); }
-                else if (selectedItem == menu10_7Item) { services.ShowMe10_7(); }
-                else if (selectedItem == menu10_8Item) { services.ShowMe10_8(); }
-                else if (selectedItem == menu10_41Item) { services.ShowMe10_41(); }
-                else if (selectedItem == menu10_42Item) { services.ShowMe10_42(); }
-            }
-            if(sender == signalMenu)
-            {
-                if(selectedItem == menuSignal100)
-                {
-                    signals.Signalling100();
-                }
+                if (selectedItem == menu10_5Item) { Services.ShowMe10_5();  }
+                else if (selectedItem == menu10_6Item) { Services.ShowMe10_6(); }
+                else if (selectedItem == menu10_7Item) { Services.ShowMe10_7(); }
+                else if (selectedItem == menu10_8Item) { Services.ShowMe10_8(); }
+                else if (selectedItem == menu10_41Item) { Services.ShowMe10_41(); }
+                else if (selectedItem == menu10_42Item) { Services.ShowMe10_42(); }
             }
             if(sender == backupMenu)
             {
                 if (selectedItem == menu10_32List)
                 {
-                    string selectedListItem = menu10_32List.SelectedItem.ToString();
-                    if (selectedListItem == "Code 2")
+                    if (Globals.UltimateBackupDep)
                     {
-                        backup.Requesting10_32C2();
+                        string selectedListItem = menu10_32List.SelectedItem.ToString();
+                        if (selectedListItem == "Code 2")
+                        {
+                            Backup.Requesting10_32C2();
+                        }
+                        else if (selectedListItem == "Code 3")
+                        {
+                            Backup.Requesting10_32C3();
+                        }
+                        else if (selectedListItem == "Female")
+                        {
+                            Backup.Requesting10_32F();
+                        }
+                        else if (selectedListItem == "Traffic Stop")
+                        {
+                            Backup.Requesting10_32TS();
+                        }
+                        else if (selectedListItem == "K9")
+                        {
+                            Backup.Requesting10_32K9();
+                        }
                     }
-                    else if (selectedListItem == "Code 3")
+                    else
                     {
-                        backup.Requesting10_32C3();
-                    }
-                    else if (selectedListItem == "Female")
-                    {
-                        backup.Requesting10_32F();
-                    }
-                    else if (selectedListItem == "Traffic Stop")
-                    {
-                        backup.Requesting10_32TS();
-                    }
-                    else if (selectedListItem == "K9")
-                    {
-                        backup.Requesting10_32K9();
+                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
                     }
                 }
                 else if(selectedItem == menu10_51Item)
                 {
-                    backup.Requesting10_51();
+                    if (Globals.StopThePedDep)
+                    {
+                        Backup.Requesting10_51();
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Stop the Ped is required for this function");
+                    }
                 }
                 else if(selectedItem == menu10_52Item)
                 {
-                    backup.Requesting10_52();
+                    if (Globals.UltimateBackupDep)
+                    {
+                        string selectedListItem = menu10_32List.SelectedItem.ToString();
+                        if (selectedListItem == "Injuries")
+                        {
+                            Backup.Requesting10_52I();
+                        }
+                        else if (selectedListItem == "Fatalities")
+                        {
+                            Backup.Requesting10_52F();
+                        }
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
+                    }
                 }
                 else if(selectedItem == menu10_53Item)
                 {
-                    backup.Requesting10_53();
+                    Backup.Requesting10_53();
                 }
                 else if (selectedItem == menu10_71Item)
                 {
-                    backup.Requesting10_71();
+                    if (Globals.UltimateBackupDep)
+                    {
+                        Backup.Requesting10_71();
+                    }
+                    else
+                    {
+                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
+                    }
                 }
             }
         }

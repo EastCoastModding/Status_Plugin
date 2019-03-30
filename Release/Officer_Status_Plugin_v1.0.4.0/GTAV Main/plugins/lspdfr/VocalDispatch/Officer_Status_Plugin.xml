@@ -138,11 +138,19 @@
       <Word PreferredText="fifty" AcceptedAlternates="50"/>
       <Word PreferredText="one" AcceptedAlternates="1"/>
     </Phrase>
-    <Phrase Event="StatusPlugin.Requesting10_52" Priority="8">
+    <Phrase Event="StatusPlugin.Requesting10_52I" Priority="8">
       <Word PreferredText="requesting" AcceptedAlternates="send"/>
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="fifty" AcceptedAlternates="50"/>
       <Word PreferredText="two" AcceptedAlternates="2"/>
+      <Word PreferredText="injuries" AcceptedAlternates="injury"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_52F" Priority="8">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="fifty" AcceptedAlternates="50"/>
+      <Word PreferredText="two" AcceptedAlternates="2"/>
+      <Word PreferredText="fatalities" AcceptedAlternates="fatal"/>
     </Phrase>
     <Phrase Event="StatusPlugin.Requesting10_53" Priority="8">
       <Word PreferredText="requesting" AcceptedAlternates="send"/>

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using LSPD_First_Response.Mod.API;
 using Rage;
+using System.IO;
 
 namespace Officer_Status_Plugin
 {
@@ -16,11 +17,22 @@ namespace Officer_Status_Plugin
                 if (an.Name.ToLower() == Plugin.ToLower())
                 {
                     if (minversion == null || an.Version.CompareTo(minversion) >= 0)
+                    {
                         return true;
+                    }
                 }
             }
             return false;
         }
+
+        internal static void GetDependencies()
+        {
+            Globals.UltimateBackupDep = File.Exists("UltimateBackup.dll");
+            if(!Globals.UltimateBackupDep) { Game.Console.Print("Officer Status Plugin is optimised for use with UltimateBackup"); }
+            Globals.StopThePedDep = File.Exists("StopThePed.dll");
+            Globals.VocalDispatchDep = File.Exists("VocalDispatch.dll");
+        }
+
         internal static void GetIni()
         {
             KeysConverter kc = new KeysConverter();
