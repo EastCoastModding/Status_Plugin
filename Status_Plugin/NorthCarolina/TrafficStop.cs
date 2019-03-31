@@ -40,30 +40,13 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             Functions.SetPlayerAvailableForCalls(false);
             Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing You 10-11 O4 (Traffic Stop Occupied Times 4)");
-            if (Globals.UltimateBackupDep)
-            {
-                Backup.Requesting10_32TS();
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~10-4, Units Responding");
-            }
-            else
-            {
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": UltimateBackup is required for this feature.");
-            }
+            Backup.Requesting10_32TS();
             return true;
         }
         internal static bool ShowMeCode5()
         {
-            if (Globals.UltimateBackupDep)
-            {
-                Backup.Requesting10_32FS();
-                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you Code 5 (Felony Stop)");
-            }
-            else
-            {
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": Ultimate Backup is required for this feature.");
-            }
+            Functions.SetPlayerAvailableForCalls(false);
+            Backup.Requesting10_32FS();
             return true;
         }
     }

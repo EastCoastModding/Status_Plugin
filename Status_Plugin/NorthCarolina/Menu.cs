@@ -205,63 +205,42 @@ namespace Officer_Status_Plugin.NorthCarolina
             {
                 if (selectedItem == menu10_32List)
                 {
-                    if (Globals.UltimateBackupDep)
+                    string selectedListItem = menu10_32List.SelectedItem.ToString();
+                    if (selectedListItem == "Code 2")
                     {
-                        string selectedListItem = menu10_32List.SelectedItem.ToString();
-                        if (selectedListItem == "Code 2")
-                        {
-                            Backup.Requesting10_32C2();
-                        }
-                        else if (selectedListItem == "Code 3")
-                        {
-                            Backup.Requesting10_32C3();
-                        }
-                        else if (selectedListItem == "Female")
-                        {
-                            Backup.Requesting10_32F();
-                        }
-                        else if (selectedListItem == "Traffic Stop")
-                        {
-                            Backup.Requesting10_32TS();
-                        }
-                        else if (selectedListItem == "K9")
-                        {
-                            Backup.Requesting10_32K9();
-                        }
+                        Backup.Requesting10_32C2();
                     }
-                    else
+                    else if (selectedListItem == "Code 3")
                     {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
+                        Backup.Requesting10_32C3();
+                    }
+                    else if (selectedListItem == "Female")
+                    {
+                        Backup.Requesting10_32F();
+                    }
+                    else if (selectedListItem == "Traffic Stop")
+                    {
+                        Backup.Requesting10_32TS();
+                    }
+                    else if (selectedListItem == "K9")
+                    {
+                        Backup.Requesting10_32K9();
                     }
                 }
                 else if(selectedItem == menu10_51Item)
                 {
-                    if (Globals.StopThePedDep)
-                    {
-                        Backup.Requesting10_51();
-                    }
-                    else
-                    {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Stop the Ped is required for this function");
-                    }
+                    Backup.Requesting10_51();
                 }
                 else if(selectedItem == menu10_52Item)
                 {
-                    if (Globals.UltimateBackupDep)
+                    string selectedListItem = menu10_32List.SelectedItem.ToString();
+                    if (selectedListItem == "Injuries")
                     {
-                        string selectedListItem = menu10_32List.SelectedItem.ToString();
-                        if (selectedListItem == "Injuries")
-                        {
-                            Backup.Requesting10_52I();
-                        }
-                        else if (selectedListItem == "Fatalities")
-                        {
-                            Backup.Requesting10_52F();
-                        }
+                        Backup.Requesting10_52I();
                     }
-                    else
+                    else if (selectedListItem == "Fatalities")
                     {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
+                        Backup.Requesting10_52F();
                     }
                 }
                 else if(selectedItem == menu10_53Item)
@@ -270,14 +249,7 @@ namespace Officer_Status_Plugin.NorthCarolina
                 }
                 else if (selectedItem == menu10_71Item)
                 {
-                    if (Globals.UltimateBackupDep)
-                    {
-                        Backup.Requesting10_71();
-                    }
-                    else
-                    {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Ultimate Backup is required for this function");
-                    }
+                    Backup.Requesting10_71();
                 }
             }
         }

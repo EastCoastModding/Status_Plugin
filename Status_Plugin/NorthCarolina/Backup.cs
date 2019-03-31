@@ -1,8 +1,6 @@
 ﻿using LSPD_First_Response.Mod.API;
 using Rage;
 
-using UltimateBackup;
-
 namespace Officer_Status_Plugin.NorthCarolina
 {
     internal static class Backup
@@ -11,7 +9,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestOnSceneBackup(true, OnSceneResponseType.Code2, "LocalPatrol");
+                UltimateBackupFuncs.RequestOnSceneBackup(2, "LocalPatrol");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 2");
             }
             else
@@ -24,7 +22,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestOnSceneBackup(true, OnSceneResponseType.Code3, "LocalPatrol");
+                UltimateBackupFuncs.RequestOnSceneBackup(3, "LocalPatrol");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 3");
             }
             else
@@ -37,7 +35,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestOnSceneBackup(true, OnSceneResponseType.Code2, "FemaleLocalPatrol");
+                UltimateBackupFuncs.RequestOnSceneBackup(2, "FemaleLocalPatrol");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Female Unit");
             }
             else
@@ -50,8 +48,15 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal , "LocalPatrol");
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Code 2 Unit");
+                if (Functions.IsPlayerPerformingPullover())
+                {
+                    UltimateBackupFuncs.RequestTrafficStop(1, "LocalPatrol");
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Code 2 Unit");
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Traffic stop is not in progress.");
+                }
             }
             else
             {
@@ -63,8 +68,15 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Felony, "LocalPatrol");
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Code 3 Units");
+                if (Functions.IsPlayerPerformingPullover())
+                {
+                    UltimateBackupFuncs.RequestTrafficStop(2, "LocalPatrol");
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Code 3 Units");
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Traffic stop is not in progress.");
+                }
             }
             else
             {
@@ -76,8 +88,15 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "K9LocalPatrol");
-                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching K9 Unit");
+                if (Functions.IsPlayerPerformingPullover())
+                {
+                    UltimateBackupFuncs.RequestTrafficStop(1, "K9LocalPatrol");
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching K9 Unit");
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Traffic stop is not in progress.");
+                }
             }
             else
             {
@@ -104,7 +123,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestAmbulanceUnit(true, true, "Ambulance");
+                UltimateBackupFuncs.RequestAmbulanceUnit("Ambulance");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching EMS (Injuries)");
             }
             else
@@ -117,7 +136,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestAmbulanceUnit(true, true, "Ambulance");
+                UltimateBackupFuncs.RequestAmbulanceUnit("Ambulance");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching EMS (Fatalities)");
             }
             else
@@ -131,10 +150,8 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Controls.requestFireTruckUnit(true, true, "FireTruck");
+                UltimateBackupFuncs.RequestFireTruckUnit("FireTruck");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Firetruck");
-                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                Functions.PlayScannerAudio("10_4");
             }
             else
             {
@@ -149,10 +166,10 @@ namespace Officer_Status_Plugin.NorthCarolina
             {
                 if (Functions.IsPlayerPerformingPullover())
                 {
-                    Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "Supervisor");
+                    UltimateBackupFuncs.RequestTrafficStop(1,"Supervisor");
                     Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Supervisor Code 2");
                 }
-                Controls.requestOnSceneBackup(true, OnSceneResponseType.Code2, "Supervisor");
+                UltimateBackupFuncs.RequestOnSceneBackup(2, "Supervisor");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Supervisor Code 2");
             }
             else
@@ -160,11 +177,6 @@ namespace Officer_Status_Plugin.NorthCarolina
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Ultimate Backup for this Feature");
             }
             return true;
-        }
-
-        internal static void Requesting10_99()
-        {
-            Controls.requestPanicBackup(true);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.UltimateBackupDep)
             {
-                Backup.Requesting10_99();
+                UltimateBackupFuncs.PanicUnits();
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudioUsingPosition("PANIC_BUTTON BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~All available units responding code 3");
@@ -53,22 +53,8 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.IsTSBackupRequired)
             {
-                if (Functions.IsPlayerPerformingPullover())
-                {
-                    if (Globals.UltimateBackupDep)
-                    {
-                        Backup.Requesting10_32TS();
-                        Globals.IsTSBackupRequired = false;
-                    }
-                    else
-                    {
-                        Game.DisplayNotification("~r~" + Globals.PluginName + ": Ultimate Backup is required for this feature.");
-                    }
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": Traffic stop is not in progress.");
-                }
+                Backup.Requesting10_32TS();
+                Globals.IsTSBackupRequired = false;
             }
             return true;
         }
