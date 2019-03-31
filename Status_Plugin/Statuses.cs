@@ -65,17 +65,8 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                bool CarFound = Controls.requestCode2BackupFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 2");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch Unit Code 2");
-                }
+                UltimateBackupFuncs.RequestOnSceneBackup(2, "LocalPatrol");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 2");
             }
             else
             {
@@ -87,17 +78,8 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                bool CarFound = Controls.requestCode3BackupFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 3");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch Unit Code 3");
-                }
+                UltimateBackupFuncs.RequestOnSceneBackup(3, "LocalPatrol");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 3");
             }
             else
             {
@@ -109,17 +91,8 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                bool CarFound = Controls.requestFemaleBackupFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Female Unit");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch Female Unit");
-                }
+                UltimateBackupFuncs.RequestOnSceneBackup(2, "FemaleLocalPatrol");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Female Unit");
             }
             else
             {
@@ -150,17 +123,8 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("StopThePed"))
             {
-                bool CarFound = StopThePed.Controls.requestTowFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Tow Truck");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch Tow Truck");
-                }
+                StopThePedFuncs.RequestTowTruck();
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Tow Truck");
             }
             else
             {
@@ -172,17 +136,10 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                bool CarFound = Controls.requestAmbulanceFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching EMS");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch EMS");
-                }
+                UltimateBackupFuncs.RequestAmbulanceUnit("Ambulance");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching EMS");
+                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+                Functions.PlayScannerAudio("10_4");
             }
             else
             {
@@ -194,17 +151,10 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                bool CarFound = Controls.requestFireDeptFromVocalDispatch();
-                if (CarFound)
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Firetruck");
-                    GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
-                    Functions.PlayScannerAudio("10_4");
-                }
-                else
-                {
-                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Unable to Dispatch Firetruck");
-                }
+                UltimateBackupFuncs.RequestFireTruckUnit("Firetruck");
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Firetruck");
+                GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
+                Functions.PlayScannerAudio("10_4");
             }
             else
             {
@@ -216,7 +166,7 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                Controls.requestPanicBackup(true);
+                UltimateBackupFuncs.PanicUnits();
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudioUsingPosition("PANIC_BUTTON BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~All available units respond code 3");
@@ -236,7 +186,7 @@ namespace Officer_Status_Plugin
                 {
                     if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
                     {
-                        Controls.requestTrafficStopBackup(true, TrafficStopResponseType.Normal, "LocalPatrol");
+                        UltimateBackupFuncs.RequestTrafficStop(1, "LocalPatrol");
                         Globals.IsTSBackupRequired = false;
                         GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                         Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
@@ -267,7 +217,7 @@ namespace Officer_Status_Plugin
         {
             if (Utilities.IsLSPDFRPluginRunning("UltimateBackup"))
             {
-                Controls.requestFelonyBackupFromVocalDispatch();
+                UltimateBackupFuncs.RequestTrafficStop(2, "LocalPatrol");
                 GameFiber.SleepWhile(Functions.GetIsAudioEngineBusy, 100000);
                 Functions.PlayScannerAudioUsingPosition("10_4 BACKUP_REQUIRED", Game.LocalPlayer.Character.Position);
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Showing you Code 5 (Felony Stop)");

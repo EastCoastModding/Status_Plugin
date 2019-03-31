@@ -72,12 +72,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StopThePedFuncs.cs" />
     <Compile Include="TS10_11Funcs.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Statuses.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="UltimateBackupFuncs.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Vocal_Dispatch_Start.cs" />
   </ItemGroup>
