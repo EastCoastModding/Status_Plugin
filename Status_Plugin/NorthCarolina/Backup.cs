@@ -109,7 +109,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         {
             if (Globals.StopThePedDep)
             {
-                StopThePed.Controls.requestTowFromVocalDispatch();
+                StopThePedFuncs.RequestTowTruck();
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Tow Truck");
             }
             else

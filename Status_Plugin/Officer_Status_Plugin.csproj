@@ -80,6 +80,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="StopThePedFuncs.cs" />
     <Compile Include="UltimateBackupFuncs.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="NorthCarolina\Vocal_Dispatch_Start.cs" />
