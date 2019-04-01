@@ -118,6 +118,12 @@
       <Word PreferredText="traffic"/>
       <Word PreferredText="stop"/>
     </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_38" Priority="11">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="thirty" AcceptedAlternates="30"/>
+      <Word PreferredText="eight" AcceptedAlternates="8"/>
+    </Phrase>
     <Phrase Event="StatusPlugin.ShowMe10_41" Priority="10">
       <Word PreferredText="show" AcceptedAlternates="i"/>
       <Word PreferredText="me" AcceptedAlternates="am"/>
@@ -159,6 +165,12 @@
       <Word PreferredText="three" AcceptedAlternates="3"/>
     </Phrase>
     <Phrase Event="StatusPlugin.Requesting10_71" Priority="15">
+      <Word PreferredText="requesting" AcceptedAlternates="send"/>
+      <Word PreferredText="ten" AcceptedAlternates="10"/>
+      <Word PreferredText="seventy" AcceptedAlternates="70"/>
+      <Word PreferredText="one" AcceptedAlternates="1"/>
+    </Phrase>
+    <Phrase Event="StatusPlugin.Requesting10_72" Priority="11">
       <Word PreferredText="requesting" AcceptedAlternates="send"/>
       <Word PreferredText="ten" AcceptedAlternates="10"/>
       <Word PreferredText="seventy" AcceptedAlternates="70"/>

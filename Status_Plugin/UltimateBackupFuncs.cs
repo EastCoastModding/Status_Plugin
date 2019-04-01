@@ -32,5 +32,15 @@ namespace Officer_Status_Plugin
         {
             Controls.requestPanicBackup(true);
         }
+
+        internal static void RequestRoadBlockUnits()
+        {
+            Controls.requestRoadBlockBackup(true);
+        }
+
+        internal static void RequestPursuitBackup(string backupType)
+        {
+            Controls.requestPursuitBackup(true, backupType)
+        }
     }
 }

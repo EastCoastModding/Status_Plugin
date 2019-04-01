@@ -105,6 +105,27 @@ namespace Officer_Status_Plugin.NorthCarolina
             return true;
         }
 
+        internal static bool Requesting10_38()
+        {
+            if (Globals.UltimateBackupDep)
+            {
+                if (Functions.IsPedInPursuit(Game.LocalPlayer.Character))
+                {
+                    UltimateBackupFuncs.RequestRoadBlockUnits();
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Roadblock Units");
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Pursuit is not in progress.");
+                }
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Ultimate Backup for this Feature");
+            }
+            return true;
+        }
+
         internal static bool Requesting10_51()
         {
             if (Globals.StopThePedDep)
@@ -171,6 +192,25 @@ namespace Officer_Status_Plugin.NorthCarolina
                 }
                 UltimateBackupFuncs.RequestOnSceneBackup(2, "Supervisor");
                 Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Supervisor Code 2");
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Ultimate Backup for this Feature");
+            }
+            return true;
+        }
+        internal static bool Requesting10_72()
+        {
+            if (Globals.UltimateBackupDep)
+            {
+                if (Functions.IsPedInPursuit(Game.LocalPlayer.Character))
+                {
+                    UltimateBackupFuncs.RequestPursuitBackup("LocalAir");
+                }
+                else
+                {
+                    Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Pursuit is not in progress.");
+                }
             }
             else
             {

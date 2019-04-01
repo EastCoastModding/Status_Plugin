@@ -22,6 +22,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static UIMenuItem menu10_23Item;
         private static UIMenuListItem menu10_32List;
         private static readonly object[] List10_32 = new object[] { "Code 2", "Code 3", "Female", "Traffic Stop", "K9"};
+        private static UIMenuItem menu10_38Item;
         private static UIMenuItem menu10_41Item;
         private static UIMenuItem menu10_42Item;
         private static UIMenuItem menu10_51Item;
@@ -29,6 +30,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static readonly object[] List10_52 = new object[] { "Injuries", "Fatalities" };
         private static UIMenuItem menu10_53Item;
         private static UIMenuItem menu10_71Item;
+        private static UIMenuItem menu10_72Item;
         private static UIMenuItem menu10_99Item;
         private static UIMenuItem menuAffirmativeItem;
         private static UIMenuItem menuNegativeItem;
@@ -124,11 +126,13 @@ namespace Officer_Status_Plugin.NorthCarolina
             backupMenu.SetMenuWidthOffset(10);
             _MenuPool.Add(backupMenu);
 
-            backupMenu.AddItem(menu10_32List = new UIMenuListItem(">>10-32", "~g~General Backup", List10_32));
+            backupMenu.AddItem(menu10_32List = new UIMenuListItem(">>10-32", "~g~Request General Backup", List10_32));
+            backupMenu.AddItem(menu10_38Item = new UIMenuItem(">>10-38", "~g~Request Roadblock(Pursuit)"));
             backupMenu.AddItem(menu10_51Item = new UIMenuItem(">>10-51", "~g~Request a Tow Truck"));
             backupMenu.AddItem(menu10_52Item = new UIMenuListItem(">>10-52", "~g~Request an EMS", List10_52));
             backupMenu.AddItem(menu10_53Item = new UIMenuItem(">>10-53", "~g~Request Fire Department"));
             backupMenu.AddItem(menu10_71Item = new UIMenuItem(">>10-71", "~g~Request Supervisor"));
+            backupMenu.AddItem(menu10_72Item = new UIMenuItem(">>10-72", "~g~Request Air Unit(Pursuit)"));
 
             backupMenu.RefreshIndex();
             backupMenu.OnItemSelect += OnItemSelect;
@@ -227,11 +231,15 @@ namespace Officer_Status_Plugin.NorthCarolina
                         Backup.Requesting10_32K9();
                     }
                 }
-                else if(selectedItem == menu10_51Item)
+                else if (selectedItem == menu10_38Item)
+                {
+                    Backup.Requesting10_38();
+                }
+                else if (selectedItem == menu10_51Item)
                 {
                     Backup.Requesting10_51();
                 }
-                else if(selectedItem == menu10_52Item)
+                else if (selectedItem == menu10_52Item)
                 {
                     string selectedListItem = menu10_32List.SelectedItem.ToString();
                     if (selectedListItem == "Injuries")
@@ -243,13 +251,17 @@ namespace Officer_Status_Plugin.NorthCarolina
                         Backup.Requesting10_52F();
                     }
                 }
-                else if(selectedItem == menu10_53Item)
+                else if (selectedItem == menu10_53Item)
                 {
                     Backup.Requesting10_53();
                 }
                 else if (selectedItem == menu10_71Item)
                 {
                     Backup.Requesting10_71();
+                }
+                else if (selectedItem == menu10_72Item)
+                {
+                    Backup.Requesting10_72();
                 }
             }
         }

@@ -23,6 +23,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static Guid guid10_32F;
         private static Guid guid10_32TS;
         private static Guid guid10_32K9;
+        private static Guid guid10_38;
         private static Guid guid10_41;
         private static Guid guid10_42;
         private static Guid guid10_51;
@@ -30,6 +31,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static Guid guid10_52F;
         private static Guid guid10_53;
         private static Guid guid10_71;
+        private static Guid guid10_72;
         private static Guid guid10_99;
         private static Guid guidcode5;
         private static Guid guidAffirmative;
@@ -57,6 +59,8 @@ namespace Officer_Status_Plugin.NorthCarolina
             guid10_32TS = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_32TS", Backup.Requesting10_32TS);
             guid10_32K9 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_32K9", Backup.Requesting10_32K9);
 
+            guid10_38 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_38", Backup.Requesting10_38);
+
             guid10_41 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_41", Services.ShowMe10_41);
             guid10_42 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_42", Services.ShowMe10_42);
 
@@ -66,6 +70,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             guid10_53 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_53", Backup.Requesting10_53);
 
             guid10_71 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_71", Backup.Requesting10_71);
+            guid10_72 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_72", Backup.Requesting10_72);
 
             guid10_99 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_99", General.ShowMe10_99);
             guidcode5 = APIv1.RegisterEventHandler("StatusPlugin.ShowMeCode5", TrafficStop.ShowMeCode5);
@@ -93,6 +98,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             APIv1.UnregisterEventHandler(guid10_32F);
             APIv1.UnregisterEventHandler(guid10_32TS);
             APIv1.UnregisterEventHandler(guid10_32K9);
+            APIv1.UnregisterEventHandler(guid10_38);
             APIv1.UnregisterEventHandler(guid10_41);
             APIv1.UnregisterEventHandler(guid10_42);
             APIv1.UnregisterEventHandler(guid10_51);
@@ -100,6 +106,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             APIv1.UnregisterEventHandler(guid10_52F);
             APIv1.UnregisterEventHandler(guid10_53);
             APIv1.UnregisterEventHandler(guid10_71);
+            APIv1.UnregisterEventHandler(guid10_72);
             APIv1.UnregisterEventHandler(guid10_99);
             APIv1.UnregisterEventHandler(guidcode5);
             APIv1.UnregisterEventHandler(guidAffirmative);
