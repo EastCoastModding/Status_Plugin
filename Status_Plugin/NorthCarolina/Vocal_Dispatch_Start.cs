@@ -16,6 +16,7 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static Guid guid10_11O3;
         private static Guid guid10_11O4;
         private static Guid guid10_15;
+        private static Guid guid10_16;
         private static Guid guid10_19;
         private static Guid guid10_23;
         private static Guid guid10_32C2;
@@ -36,6 +37,8 @@ namespace Officer_Status_Plugin.NorthCarolina
         private static Guid guidcode5;
         private static Guid guidAffirmative;
         private static Guid guidNegative;
+        private static Guid guidSignal60;
+
         //</Guid>
 
         internal static void Main()
@@ -50,6 +53,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             guid10_11O3 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_11O3", TrafficStop.ShowMe10_11O3);
             guid10_11O4 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_11O4", TrafficStop.ShowMe10_11O4);
             guid10_15 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_15", General.ShowMe10_15);
+            guid10_16 = APIv1.RegisterEventHandler("StatusPlugin.Requesting10_16", Backup.requesting10_16);
             guid10_19 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_19", General.ShowMe10_19);
             guid10_23 = APIv1.RegisterEventHandler("StatusPlugin.ShowMe10_23", General.ShowMe10_23);
 
@@ -76,6 +80,8 @@ namespace Officer_Status_Plugin.NorthCarolina
             guidcode5 = APIv1.RegisterEventHandler("StatusPlugin.ShowMeCode5", TrafficStop.ShowMeCode5);
             guidAffirmative = APIv1.RegisterEventHandler("StatusPlugin.Affirmative", General.Affirmative);
             guidNegative = APIv1.RegisterEventHandler("StatusPlugin.Negative", General.Negative);
+
+            guidSignal60 = APIv1.RegisterEventHandler("StatusPlugin.Signal60", Signals.Signal60);
 
             Game.Console.Print(Globals.PluginName + ": Registered Vocal Dispatch Commands.");
         }
@@ -111,6 +117,7 @@ namespace Officer_Status_Plugin.NorthCarolina
             APIv1.UnregisterEventHandler(guidcode5);
             APIv1.UnregisterEventHandler(guidAffirmative);
             APIv1.UnregisterEventHandler(guidNegative);
+            APIv1.UnregisterEventHandler(guidSignal60);
             Game.Console.Print(Globals.PluginName + ": Unregistered Vocal Dispatch Commands.");
         }
     }
