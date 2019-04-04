@@ -8,5 +8,10 @@ namespace Officer_Status_Plugin
         {
             Controls.requestTowFromVocalDispatch();
         }
+
+        internal static void RequestTransport()
+        {
+            Controls.requestTransportFromVocalDispatch();
+        }
     }
 }

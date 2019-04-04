@@ -40,7 +40,7 @@ namespace Officer_Status_Plugin
 
         internal static void RequestPursuitBackup(string backupType)
         {
-            Controls.requestPursuitBackup(true, backupType)
+            Controls.requestPursuitBackup(true, backupType);
         }
     }
 }

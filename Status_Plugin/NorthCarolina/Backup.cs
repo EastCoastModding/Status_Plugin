@@ -5,6 +5,19 @@ namespace Officer_Status_Plugin.NorthCarolina
 {
     internal static class Backup
     {
+        internal static bool requesting10_16()
+        {
+            if (Globals.StopThePedDep)
+            {
+                StopThePedFuncs.RequestTransport();
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~Dispatching Unit Code 3");
+            }
+            else
+            {
+                Game.DisplayNotification("~r~" + Globals.PluginName + ": ~w~You Require Stop The Ped for this Feature");
+            }
+            return true;
+        }
         internal static bool Requesting10_32C2()
         {
             if (Globals.UltimateBackupDep)
