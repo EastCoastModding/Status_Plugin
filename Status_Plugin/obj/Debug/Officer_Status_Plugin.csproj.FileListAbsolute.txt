@@ -22,3 +22,4 @@ C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_St
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.csproj.CopyComplete
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.dll
 C:\Users\olive\Documents\GitHub\Status_Plugin\Status_Plugin\obj\Debug\Officer_Status_Plugin.pdb
+C:\Users\olive\Desktop\LSPDFR Modding\Status_Plugin\Status_Plugin\bin\Debug\StopThePed.dll
